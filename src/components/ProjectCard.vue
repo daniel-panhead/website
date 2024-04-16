@@ -9,9 +9,10 @@
 
   const showPopup = ref(false);
 
-  const { title, tagline, isPopup = false } = defineProps<{
+  const { title, tagline, link, isPopup = false } = defineProps<{
     title: string,
     tagline: string,
+    link: string,
     isPopup?: boolean
   }>();
 
@@ -35,7 +36,7 @@
         <p :class="isPopup ? 'project_card-description--popup' : 'project_card-description'">
           <slot></slot>
         </p>
-        <a v-if="lgBreakpoint || isPopup" href="#" class="project_card-link">
+        <a v-if="lgBreakpoint || isPopup" :href="link" class="project_card-link">
           Check it out
           <svg
             aria-hidden="true"
@@ -74,7 +75,7 @@
       </svg>
     </div>
     <ProjectCardPopup v-if="!isPopup && !lgBreakpoint" v-model="showPopup">
-      <ProjectCard :title="title" :tagline="tagline" :isPopup="true">
+      <ProjectCard :title="title" :tagline="tagline" :link="link" :isPopup="true">
         <slot></slot>
       </ProjectCard>
     </ProjectCardPopup>

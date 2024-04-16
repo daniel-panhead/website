@@ -9,6 +9,8 @@ import ProjectCard from "../components/ProjectCard.vue";
 
 import cat from "../assets/cat.png";
 import headshot from "../assets/headshot.jpg";
+
+import { projects } from "./_projects";
 ---
 
 <Layout title="Daniel Pan">
@@ -73,26 +75,16 @@ import headshot from "../assets/headshot.jpg";
 			</h2>
 			<div class="projects-content">
 				<div class="projects-cards">
-					<ProjectCard
-						client:load
-						title="ProFound"
-						tagline="The world's first AI cofounder!"
-					>
-						ProFound was a project we made for UBC BizTech's 2024 ProduHacks. In
-						under 24 hours, I designed the frontend for an AI-powered low-code
-						prototype generator app, which can help startup founders quickly
-						make mockups for their ideas.
-					</ProjectCard>
-					<ProjectCard
-						client:load
-						title="Sherlockify"
-						tagline="Search your friends online!"
-					>
-						ProFound was a project we made for UBC BizTech’s 2024 ProduHacks. In
-						under 24 hours, I designed the frontend for an AI-powered low-code
-						prototype generator app, which can help startup founders quickly
-						make mockups for their ideas.
-					</ProjectCard>
+					{projects.slice(0, 2).map((project) => (
+						<ProjectCard
+							client:load
+							title={project.title} 
+							tagline={project.tagline}
+							link={project.link}
+						>
+							{project.description}
+						</ProjectCard>
+					))}
 				</div>
 				<button class="bg-primary">
 					<Image src={cat} alt="Cat" />

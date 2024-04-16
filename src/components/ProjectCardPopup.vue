@@ -7,8 +7,8 @@ const shown = defineModel<boolean>();
 </script>
 
 <template>
-  <div @click.self="shown = false" v-if="shown" class="project_card-popup">
-    <div class="project_card-popup_container">
+  <div v-if="shown" class="project_card-popup">
+    <div @click.self="shown = false" class="project_card-popup_container">
       <svg @click="shown = false" class="project_card-close" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="29"
         height="29" fill="none" viewBox="0 0 24 24">
         <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
