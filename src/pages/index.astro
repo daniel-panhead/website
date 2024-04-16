@@ -1,11 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import headshot from "../assets/headshot.jpg";
 import GitHub from "../components/socials/GitHub.astro";
 import LinkedIn from "../components/socials/LinkedIn.astro";
 import Email from "../components/socials/Email.astro";
-import HighlightsCard from "../components/HighlightsCard.astro";
+import HighlightsSection from "../components/HighlightsSection.astro";
+import ProjectCard from "../components/ProjectCard.vue";
+
+import cat from "../assets/cat.png";
+import headshot from "../assets/headshot.jpg";
 ---
 
 <Layout title="Daniel Pan">
@@ -48,84 +51,66 @@ import HighlightsCard from "../components/HighlightsCard.astro";
 				</main>
 			</div>
 		</div>
-		<div class="highlights">
-			<h2>Here's some highlights of my experience:</h2>
-			<div class="highlights-container">
-				<HighlightsCard title="Berlinguette Group" date="Jan 2024 - Now">
-					<svg
-						slot="icon"
-						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						fill="none"
-						viewBox="0 0 24 24"
+		<HighlightsSection />
+		<div class="projects">
+			<h2 class="projects-header">
+				My Favorite Projects
+				<svg
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					fill="none"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M12 19V5m0 14-4-4m4 4 4-4"></path>
+				</svg>
+			</h2>
+			<div class="projects-content">
+				<div class="projects-cards">
+					<ProjectCard
+						title="ProFound"
+						tagline="The world's first AI cofounder!"
 					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-width="2"
-							d="M8.737 8.737a21.49 21.49 0 0 1 3.308-2.724m0 0c3.063-2.026 5.99-2.641 7.331-1.3 1.827 1.828.026 6.591-4.023 10.64-4.049 4.049-8.812 5.85-10.64 4.023-1.33-1.33-.736-4.218 1.249-7.253m6.083-6.11c-3.063-2.026-5.99-2.641-7.331-1.3-1.827 1.828-.026 6.591 4.023 10.64m3.308-9.34a21.497 21.497 0 0 1 3.308 2.724m2.775 3.386c1.985 3.035 2.579 5.923 1.248 7.253-1.336 1.337-4.245.732-7.295-1.275M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"
-						></path>
-					</svg>
-
-					At Berlinguette Group, we're doing experimental research into uses of
-					electrochemistry to enhance nuclear fusion rates. As a co-op software
-					developer, I'm working on our central experiment control interface
-					using technologies like React, Python, Docker, Arduino, and MQTT.
-				</HighlightsCard>
-				<hr>
-				<HighlightsCard title="UBC BIOMOD Club" date="May 2023 - Now">
-					<svg
-						slot="icon"
-						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						fill="none"
-						viewBox="0 0 24 24"
+						ProFound was a project we made for UBC BizTech's 2024 ProduHacks. In
+						under 24 hours, I designed the frontend for an AI-powered low-code
+						prototype generator app, which can help startup founders quickly
+						make mockups for their ideas.
+					</ProjectCard>
+					<ProjectCard
+						title="Sherlockify"
+						tagline="Search your friends online!"
 					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M15.041 13.862A4.999 4.999 0 0 1 17 17.831V21M7 3v3.169a5 5 0 0 0 1.891 3.916M17 3v3.169a5 5 0 0 1-2.428 4.288l-5.144 3.086A5 5 0 0 0 7 17.831V21M7 5h10M7.399 8h9.252M8 16h8.652M7 19h10"
-						></path>
-					</svg>
-
-					Our club competes in the international BIOMOD competition, which is a
-					biomolecular design competition. As a co-lead for the website team,
-					I'm guiding of a team of 8 to overhaul and modernize our club's
-					website. I also helped develop the website for our 2023 competition
-					submission, where we placed 5th internationally!
-				</HighlightsCard>
-				<hr>
-				<HighlightsCard title="UBC ARC" date="May 2023 - Dec 2023">
-					<svg
-						slot="icon"
-						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						fill="none"
-						viewBox="0 0 24 24"
-					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="m8 9 3 3-3 3m5 0h3M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"
-						></path>
-					</svg>
-
-					UBC Advanced Research Computing provides high-performance compute
-					capabilities to researchers and students at the university. As a
-					datacentre technician intern, I provided support and maintenance for
-					over 450 servers consisting of nearly 16,000 CPU cores, 200 GPUs, and
-					3 petabytes of storage capacity.
-				</HighlightsCard>
+						ProFound was a project we made for UBC BizTech’s 2024 ProduHacks. In
+						under 24 hours, I designed the frontend for an AI-powered low-code
+						prototype generator app, which can help startup founders quickly
+						make mockups for their ideas.
+					</ProjectCard>
+				</div>
+				<button class="bg-primary">
+					<Image src={cat} alt="Cat" />
+					<span>
+						See more projects
+						<svg
+							width="12"
+							height="6"
+							viewBox="0 0 12 6"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M10.6666 3H1.33325M10.6666 3L7.99992 5M10.6666 3L7.99992 1"
+								stroke="black"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</span>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -219,28 +204,42 @@ import HighlightsCard from "../components/HighlightsCard.astro";
 		gap: 12px;
 	}
 
-	.highlights {
+	.projects {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		align-items: center;
+		gap: 24px;
 		padding: 12px 0;
-	}
 
-	.highlights-container {
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
 		@media (min-width: 1024px) {
-			flex-direction: row;
-			gap: 36px;
+			align-items: start;
 		}
 	}
 
-	hr {
-		width: 95%;
-		border-top: 1px solid black;
-		@media (min-width: 1024px) {
-			display: none;
+	.projects-header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 4px;
+	}
+
+	.projects-content {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 32px;
+	}
+
+	.projects-cards {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 32px;
+		@media (min-width: 768px) {
+			flex-direction: row;
+			gap: 40px;
 		}
 	}
 </style>

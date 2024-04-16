@@ -36,6 +36,7 @@ const { title } = Astro.props;
 		--tertiary-text: #b58d00;
 	}
 
+	.bg-primary { background-color: var(--primary); }
 	.text-primary { color: var(--primary-text) }
 	.text-secondary { color: var(--secondary-text) }
 	.text-tertiary { color: var(--tertiary-text) }
@@ -69,6 +70,28 @@ const { title } = Astro.props;
 		@media (min-width: 1024px) {
 			font-size: 36px;
 		}
+	}
+
+	button {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+		padding: 16px 20px;
+		border: 1px solid black;
+		border-radius: 12px;
+		font-family: "Work Sans", system-ui, sans-serif;
+		font-size: 14px;
+		transition: all 100ms ease-out;
+	}
+
+	button:hover {
+		filter: brightness(90%);
+	}
+
+	button:active {
+		filter: brightness(80%);
 	}
 
 	a {
