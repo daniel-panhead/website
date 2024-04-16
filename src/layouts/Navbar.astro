@@ -1,0 +1,77 @@
+---
+import GitHub from "../components/GitHub.astro";
+import LinkedIn from "../components/LinkedIn.astro";
+import Email from "../components/Email.astro";
+import linkedin from "../../public/linkedin.svg";
+---
+
+<div>
+  <div class="navbar-container">
+    <ul class="navbar-routes">
+      <li><a href="/">Home</a></li>
+      <li><a href="#">Projects</a></li>
+    </ul>
+
+    <div class="navbar-socials">
+      <span class="navbar-social">
+        <GitHub />
+        <span class="navbar-social--label">GitHub</span>
+      </span>
+      <span class="navbar-social">
+        <img src={linkedin.src} alt="" />
+        <!-- <LinkedIn /> -->
+        <span class="navbar-social--label">GitHub</span>
+      </span>
+      <span class="navbar-social">
+        <Email />
+        <span class="navbar-social--label">GitHub</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .navbar-container {
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 20px;
+    @media (min-width: 1024px) {
+      padding: 20px 48px;
+    }
+  }
+
+  ul.navbar-routes {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+  }
+  ul.navbar-routes li {
+    display: inline-block;
+  }
+  ul.navbar-routes li a {
+    padding: 0px 12px;
+  }
+
+  .navbar-socials {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .navbar-social {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+    font-weight: 500;
+  }
+  .navbar-social--label {
+    display: none;
+    @media (min-width: 1024px) {
+      display: block;
+    }
+  }
+</style>
