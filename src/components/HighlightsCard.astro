@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string,
+  date: string
+}
+
+const { title, date } = Astro.props;
+---
+
+<div class="highlights_card">
+  <div class="highlights_card-header">
+    <span class="highlights_card-title">
+      <slot name="icon" />
+      {title}
+    </span>
+    {date}
+  </div>
+  <p class="highlights_card-body">
+    <slot />
+  </p>
+</div>
+
+<style>
+  .highlights_card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 14px;
+  }
+
+  .highlights_card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 18px;
+  }
+
+  .highlights_card-title {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .highlights_card-body {
+    margin: 0;
+  }
+</style>
