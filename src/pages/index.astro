@@ -1,15 +1,126 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import headshot from "../assets/headshot.jpg";
+import GitHub from "../components/GitHub.astro";
+import LinkedIn from "../components/LinkedIn.astro";
+import Email from "../components/Email.astro";
 ---
 
 <Layout title="Daniel Pan">
-	<main>
-		
-	</main>
+	<div class="page">
+		<div class="bio">
+			<Image src={headshot} alt="Headshot of Daniel" class="bio-headshot" />
+			<div class="content">
+				<header>
+					<h1 class="hero_title">
+						Hi, I'm
+						<br />
+						<span class="hero_title--name">Daniel</span> 👋
+					</h1>
+				</header>
+				<main>
+					<p>
+						I'm a <span class="text-primary">Computer Science</span>
+						student at University of British Columbia. I love making projects (and
+						occasionally finishing them). In my free time, I like to spend my free
+						time doing <span class="text-secondary">web development</span>,
+						learning about infrastructure, and bouldering. I'm currently a co-op
+						software developer for
+						<span class="text-tertiary">Berlinguette Group</span>, where I'm
+						helping to support nuclear fusion research!
+					</p>
+					<div class="contact">
+						<span>Contact me:</span>
+						<div class="contact-socials">
+							<GitHub />
+							<LinkedIn />
+							<Email />
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+	</div>
 </Layout>
 
 <style>
-	main {
+	.page {
+		padding: 0 28px;
+		@media (min-width: 1024px) {
+			padding: 0 92px;
+		}
+	}
 
+	.bio {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		align-self: stretch;
+		gap: 32px;
+		padding: 12px 0;
+
+		@media (min-width: 1024px) {
+			flex-direction: row;
+			justify-content: space-between;
+			padding: 24px 0;
+		}
+	}
+
+	.bio-headshot {
+		width: 50%;
+		height: 50%;
+		border: 1px solid black;
+		border-radius: 12px;
+		box-shadow: -8px 8px 0 0 black;
+		@media (min-width: 1024px) {
+			order: 1;
+			width: 20%;
+			margin-right: 40px;
+		}
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		gap: 12px;
+		@media (min-width: 1024px) {
+			padding: 0 28px;
+			flex-basis: 50%;
+		}
+	}
+
+	.content main {
+		line-height: 175%;
+		font-size: 18px;
+
+		@media (min-width: 1024px) {
+			font-size: 24px;
+		}
+	}
+
+	.hero_title {
+		margin: 0;
+	}
+
+	.hero_title--name {
+		font-weight: 600;
+	}
+
+	.contact {
+		margin-top: 4px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 20px;
+	}
+
+	.contact-socials {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 12px;
 	}
 </style>
