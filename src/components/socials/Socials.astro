@@ -12,16 +12,16 @@ const { boldText } = Astro.props;
 ---
 
 <div class:list={["navbar-socials", {"navbar-socials--bold": boldText}]}>
-  <a class="navbar-social" href="https://github.com/daniel-panhead">
+  <a class="navbar-social" href="https://github.com/daniel-panhead" target="_blank">
     <GitHub />
     <span class="navbar-social--label">GitHub</span>
   </a>
-  <a class="navbar-social" href="https://linkedin.com/in/danielpan04">
+  <a class="navbar-social" href="https://linkedin.com/in/danielpan04" target="_blank">
     <img src={linkedin.src} alt="" />
     <!-- <LinkedIn /> -->
     <span class="navbar-social--label">LinkedIn</span>
   </a>
-  <a class="navbar-social" href="mailto:danielpan.mail@gmail.com">
+  <a class="navbar-social" href="mailto:danielpan.mail@gmail.com" target="_blank">
     <Email />
     <span class="navbar-social--label">Email</span>
   </a>

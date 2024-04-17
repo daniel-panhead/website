@@ -42,6 +42,7 @@
         <a
           :href="link"
           :class="{'project_card-link': true, 'project_card-link--responsive': !isPopup}"
+          target="_blank"
         >
           Check it out
           <svg

@@ -1,9 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import GitHub from "../components/socials/GitHub.astro";
-import LinkedIn from "../components/socials/LinkedIn.astro";
-import Email from "../components/socials/Email.astro";
 import HighlightsSection from "../components/HighlightsSection.astro";
 import headshot from "../assets/headshot.jpg";
 import ProjectsContentSection from "../components/ProjectsContentSection.astro";
@@ -115,11 +112,18 @@ import Socials from "../components/socials/Socials.astro";
 	}
 
 	.bio-headshot--image {
+		position: relative;
 		border: 1px solid black;
 		box-shadow: -8px 8px 0 0 black;
 		width: 100%;
 		height: 100%;
 		border-radius: 12px;
+	}
+
+	.bio-headshot--image:active {
+		top: 8px;
+		right: 8px;
+		box-shadow: none;
 	}
 
 	.content {
