@@ -11,8 +11,8 @@ export const projects = [
     img: profound,
     description: `
     Are you a non-technical founder who wants a comprehensive no-code solution?
-    Or maybe you're a serial founder who wants to make new ideas fast? Introducing ProFound,
-    the AI-powered low-code prototype maker, which can turn ideas into mockups in minutes, not days.
+    Or maybe you're a serial founder who wants to make new ideas fast? Introducing ProFound - 
+    the AI-powered no-code prototyper which can turn ideas into mockups in minutes, not days.
     Using Svelte, Tailwind, and WebSockets, I implemented the frontend interface to let users
     chat with ProFound and see the previews of their mockups.
     `
@@ -37,7 +37,7 @@ export const projects = [
     description: `
     As part of a team of four, I helped developed a website for the UBC BIOMOD club's 2023
     submission to the BIOMOD molecular design competition, where our team placed fifth internationally!
-    We had a lot of fun fully designing the website from scratch and developing using Vue.js and Tailwind.
+    We had a lot of fun fully designing the website from scratch and developing with Vue.js and Tailwind.
     `
   },
   {
@@ -47,8 +47,10 @@ export const projects = [
     img: drSprouts,
     description: `
     We developed this app to help aspiring green thumbs diagnose their plants at home.
-    Used AWS Bedrock + the Anthropic Claude LLM along with Amazon Knowledge Base,
+    Using AWS Bedrock + the Anthropic Claude LLM along with Amazon Knowledge Base,
     Dr. Sprouts can give you relevant results and advice backed by real scientific papers.
+    I developed a chat interface for the program using React and Typescript to let you chat
+    with Dr. Sprouts in real time!
     `
   }
 ];
