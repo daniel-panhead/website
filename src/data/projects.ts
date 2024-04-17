@@ -1,12 +1,13 @@
 import profound from "../assets/profound.png";
 import sherlockify from "../assets/sherlockify.png";
 import biomod from "../assets/biomod.png";
+import drSprouts from "../assets/dr-sprouts.png";
 
 export const projects = [
   {
     title: "ProFound",
     tagline: "The world's first AI cofounder!",
-    link: "#",
+    link: "https://github.com/daniel-panhead/profound",
     img: profound,
     description: `
     Are you a non-technical founder who wants a comprehensive no-code solution?
@@ -19,7 +20,7 @@ export const projects = [
   {
     title: "Sherlockify",
     tagline: "Search your friends online!",
-    link: "#",
+    link: "https://github.com/sherlockify/sherlockify-frontend",
     img: sherlockify,
     description: `
     Built off of the open-source Sherlock Project app, we created a web interface
@@ -31,7 +32,7 @@ export const projects = [
   {
     title: "UBC BIOMOD 2023",
     tagline: "Website for UBC BIOMOD's 2023 project submission",
-    link: "#",
+    link: "https://github.com/ubc-biomod/biomod2023",
     img: biomod,
     description: `
     As part of a team of four, I helped developed a website for the UBC BIOMOD club's 2023
@@ -42,7 +43,8 @@ export const projects = [
   {
     title: "Dr. Sprouts",
     tagline: "The AI doctor for your plants!",
-    link: "#",
+    link: "https://github.com/daniel-panhead/dr-sprouts",
+    img: drSprouts,
     description: `
     We developed this app to help aspiring green thumbs diagnose their plants at home.
     Used AWS Bedrock + the Anthropic Claude LLM along with Amazon Knowledge Base,
