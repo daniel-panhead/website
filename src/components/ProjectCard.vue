@@ -39,7 +39,10 @@
             <slot></slot>
           </p>
         </div>
-        <a v-if="lgBreakpoint || isPopup" :href="link" class="project_card-link">
+        <a
+          :href="link"
+          :class="{'project_card-link': true, 'project_card-link--responsive': !isPopup}"
+        >
           Check it out
           <svg
             aria-hidden="true"
@@ -60,7 +63,7 @@
         </a>
       </div>
       <svg
-        v-if="!isPopup && !lgBreakpoint"
+        v-if="!isPopup"
         class="project_card-expand_trigger"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -181,11 +184,23 @@
     align-items: center;
     color: var(--primary-text);
   }
+
+  .project_card-link--responsive {
+    display: none;
+    @media (min-width: 1024px) {
+      display: flex;
+    }
+  }
+
   .project_card-expand_trigger {
     position: absolute;
     bottom: 0;
     right: 0;
     margin-right: 12px;
     margin-bottom: 12px;
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
   }
 </style>

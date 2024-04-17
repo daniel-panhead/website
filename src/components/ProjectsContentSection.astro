@@ -16,7 +16,7 @@ const { maxProjects} = Astro.props;
   <div class="projects-cards">
     {projects.slice(0, maxProjects).map((project) => (
       <ProjectCard
-        client:only="vue"
+        client:idle
         title={project.title} 
         tagline={project.tagline}
         link={project.link}
@@ -80,4 +80,4 @@ const { maxProjects} = Astro.props;
     height: 155px;
     background: gray;
   }
-</style>../data/_projects
+</style>

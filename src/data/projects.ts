@@ -1,5 +1,6 @@
 import profound from "../assets/profound.png";
 import sherlockify from "../assets/sherlockify.png";
+import biomod from "../assets/biomod.png";
 
 export const projects = [
   {
@@ -31,6 +32,7 @@ export const projects = [
     title: "UBC BIOMOD 2023",
     tagline: "Website for UBC BIOMOD's 2023 project submission",
     link: "#",
+    img: biomod,
     description: `
     As part of a team of four, I helped developed a website for the UBC BIOMOD club's 2023
     submission to the BIOMOD molecular design competition, where our team placed fifth internationally!
