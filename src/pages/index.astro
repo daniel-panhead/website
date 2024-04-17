@@ -7,6 +7,7 @@ import Email from "../components/socials/Email.astro";
 import HighlightsSection from "../components/HighlightsSection.astro";
 import headshot from "../assets/headshot.jpg";
 import ProjectsContentSection from "../components/ProjectsContentSection.astro";
+import Socials from "../components/socials/Socials.astro";
 ---
 
 <Layout title="Daniel Pan">
@@ -41,9 +42,7 @@ import ProjectsContentSection from "../components/ProjectsContentSection.astro";
 					<div class="contact">
 						<span>Contact me:</span>
 						<div class="contact-socials">
-							<GitHub />
-							<LinkedIn />
-							<Email />
+							<Socials />
 						</div>
 					</div>
 				</main>
@@ -156,10 +155,10 @@ import ProjectsContentSection from "../components/ProjectsContentSection.astro";
 	}
 
 	.contact-socials {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: 12px;
+		font-size: 18px;
+		@media (min-width: 1024px) {
+			font-size: 20px;
+		}
 	}
 
 	.projects {
