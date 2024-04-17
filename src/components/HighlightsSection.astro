@@ -87,8 +87,13 @@ import HighlightCard from "./HighlightCard.astro"
   .highlights {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 28px;
 		padding: 12px 0;
+
+    @media (min-width: 1024px) {
+      gap: 28px;
+      padding: 24px 0;
+    }
 	}
 
 	.highlights-container {
@@ -105,7 +110,9 @@ import HighlightCard from "./HighlightCard.astro"
 		width: 95%;
 		border-top: 1px solid black;
 		@media (min-width: 1024px) {
-			display: none;
+			/* display: none; */
+      width: auto;
+      border-left: 1px solid black;
 		}
 	}
 </style>
