@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectsContentSection from "../components/ProjectsContentSection.astro";
+---
+
+<Layout title="Projects">
+  <div class="page">
+    <header>
+      <h1>My Projects</h1>
+      <h2>
+        Here's some of the projects I've managed to finish over the years!
+      </h2>
+    </header>
+    <div class="projects">
+      <ProjectsContentSection />
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page {
+		padding: 0 28px;
+		@media (min-width: 1024px) {
+			padding: 0 92px;
+		}
+	}
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 0;
+    @media (min-width: 768px) {
+      gap: 24px;
+      padding: 24px 0;
+    }
+  }
+
+  h1, h2 {
+    margin: 0;
+  }
+
+  h2 {
+    font-weight: normal;
+  }
+
+  .projects {
+		padding: 12px 0;
+  }
+</style>

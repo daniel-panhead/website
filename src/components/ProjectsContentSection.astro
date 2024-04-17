@@ -6,7 +6,7 @@ import cat from "../assets/cat.png";
 import { projects } from "../data/projects";
 
 interface Props {
-  maxProjects: number
+  maxProjects?: number
 }
 
 const { maxProjects} = Astro.props;
@@ -14,7 +14,7 @@ const { maxProjects} = Astro.props;
 
 <div class="projects-content">
   <div class="projects-cards">
-    {projects.slice(0, maxProjects).map((project) => (
+    {projects.slice(0, maxProjects ?? projects.length).map((project) => (
       <ProjectCard
         client:idle
         title={project.title} 
@@ -31,7 +31,7 @@ const { maxProjects} = Astro.props;
       </ProjectCard>
     ))}
   </div>
-  {maxProjects < projects.length && 
+  {maxProjects && maxProjects < projects.length && 
     <button class="bg-primary">
       <Image src={cat} alt="Cat" />
       <span>
