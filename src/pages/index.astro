@@ -77,7 +77,7 @@ import { projects } from "./_projects";
 				<div class="projects-cards">
 					{projects.slice(0, 2).map((project) => (
 						<ProjectCard
-							client:load
+							client:only="vue"
 							title={project.title} 
 							tagline={project.tagline}
 							link={project.link}
