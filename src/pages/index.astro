@@ -68,6 +68,9 @@ import Socials from "../components/socials/Socials.astro";
 			<ProjectsContentSection maxProjects={2} />
 		</div>
 	</div>
+	<footer>
+		<a href="https://www.flaticon.com/free-icons/cat" title="cat icons" target="_blank">Cat icons created by Freepik - Flaticon</a>
+	</footer>
 </Layout>
 
 <style>
@@ -187,5 +190,14 @@ import Socials from "../components/socials/Socials.astro";
 		flex-direction: row;
 		align-items: center;
 		gap: 4px;
+	}
+
+	footer {
+		font-size: 14px;
+		margin: 0 16px;
+		padding-top: 16px;
+		@media (min-width: 1024px) {
+			font-size: 16px;
+		}
 	}
 </style>
