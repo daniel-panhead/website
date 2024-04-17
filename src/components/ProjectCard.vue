@@ -2,7 +2,6 @@
   import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
   import { ref } from 'vue'
   import ProjectCardPopup from "./ProjectCardPopup.vue";
-  // import ProjectCard from "./ProjectCard.vue";
 
   const breakpoints = useBreakpoints(breakpointsTailwind);
   const lgBreakpoint = breakpoints.greaterOrEqual('lg');

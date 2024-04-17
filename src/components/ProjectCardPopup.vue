@@ -1,9 +1,5 @@
 <script setup lang="ts">
 const shown = defineModel<boolean>();
-
-// const props = defineProps<{
-//   description: string
-// }>();
 </script>
 
 <template>
