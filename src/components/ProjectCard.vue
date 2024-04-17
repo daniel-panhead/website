@@ -93,8 +93,9 @@
 
 <style>
   .project_card {
+    box-sizing: border-box;
     align-self: stretch;
-    flex-basis: 50%;
+    flex-basis: calc(50% - 16px); /* Subtract half the gap of the parent flexbox :/ */
     position: relative;
     display: flex;
     flex-direction: column;
