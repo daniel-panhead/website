@@ -1,8 +1,12 @@
+import profound from "../assets/profound.png";
+import sherlockify from "../assets/sherlockify.png";
+
 export const projects = [
   {
     title: "ProFound",
     tagline: "The world's first AI cofounder!",
     link: "#",
+    img: profound,
     description: `
     Are you a non-technical founder who wants a comprehensive no-code solution?
     Or maybe you're a serial founder who wants to make new ideas fast? Introducing ProFound,
@@ -15,6 +19,7 @@ export const projects = [
     title: "Sherlockify",
     tagline: "Search your friends online!",
     link: "#",
+    img: sherlockify,
     description: `
     Built off of the open-source Sherlock Project app, we created a web interface
     to let you search your friends online over thousands of social media sites!

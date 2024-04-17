@@ -39,7 +39,7 @@ const shown = defineModel<boolean>();
   height: 100%;
   align-items: end;
   gap: 24px;
-  padding: 0 36px;
+  padding: 0 24px;
 }
 
 .unstyled_button {

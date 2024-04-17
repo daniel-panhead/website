@@ -27,7 +27,9 @@
 <template>
   <div style="display: contents">
     <div @click="handleClickCard" :class="{'project_card': true, 'project_card--popup': isPopup}">
-      <div class="placeholder_image"></div>
+      <div class="project_card-image">
+        <slot name="img"></slot>
+      </div>
       <div class="project_card-body">
         <div class="project_card-content">
           <div :class="{'project_card-header': true, 'project_card-header--popup': isPopup}">
@@ -78,6 +80,9 @@
     </div>
     <ProjectCardPopup v-if="!isPopup && !lgBreakpoint" v-model="showPopup">
       <ProjectCard :title="title" :tagline="tagline" :link="link" :isPopup="true">
+        <template #img>
+          <slot name="img"></slot>
+        </template>
         <slot></slot>
       </ProjectCard>
     </ProjectCardPopup>
@@ -86,8 +91,8 @@
 
 <style>
   .project_card {
-    flex-basis: 50%;
     align-self: stretch;
+    flex-basis: 50%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -108,6 +113,8 @@
 
   .project_card--popup {
     box-shadow: none;
+    overflow-x: scroll;
+    flex-basis: 80%;
   }
 
   .project_card--popup:active:not(:focus-within) {
@@ -115,14 +122,9 @@
     right: 0;
   }
 
-  .placeholder_image {
-    width: 240px;
-    height: 155px;
-    background: gray;
-  }
-
   .project_card-body {
     flex-grow: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
