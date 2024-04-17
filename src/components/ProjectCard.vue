@@ -29,13 +29,15 @@
     <div @click="handleClickCard" :class="{'project_card': true, 'project_card--popup': isPopup}">
       <div class="placeholder_image"></div>
       <div class="project_card-body">
-        <div :class="{'project_card-header': true, 'project_card-header--popup': isPopup}">
-          <h3>{{title}}</h3>
-          <p>{{tagline}}</p>
+        <div class="project_card-content">
+          <div :class="{'project_card-header': true, 'project_card-header--popup': isPopup}">
+            <h3>{{title}}</h3>
+            <p>{{tagline}}</p>
+          </div>
+          <p :class="isPopup ? 'project_card-description--popup' : 'project_card-description'">
+            <slot></slot>
+          </p>
         </div>
-        <p :class="isPopup ? 'project_card-description--popup' : 'project_card-description'">
-          <slot></slot>
-        </p>
         <a v-if="lgBreakpoint || isPopup" :href="link" class="project_card-link">
           Check it out
           <svg
@@ -84,6 +86,8 @@
 
 <style>
   .project_card {
+    flex-basis: 50%;
+    align-self: stretch;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -118,10 +122,16 @@
   }
 
   .project_card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .project_card-content {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    width: 100%;
   }
 
   .project_card-header {
