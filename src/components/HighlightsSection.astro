@@ -5,7 +5,7 @@ import HighlightCard from "./HighlightCard.astro"
 <div class="highlights">
   <h2>Here's some highlights of my experience:</h2>
   <div class="highlights-container">
-    <HighlightCard title="Berlinguette Group" date="Jan 2024 - Now">
+    <HighlightCard title="Berlinguette Group" date="Jan 2024 - Now" primacy={2}>
       <svg
         class="text-tertiary"
         slot="icon"
@@ -30,7 +30,7 @@ import HighlightCard from "./HighlightCard.astro"
       using technologies like React, Python, Docker, Arduino, and MQTT.
     </HighlightCard>
     <hr>
-    <HighlightCard title="UBC BIOMOD Club" date="May 2023 - Now">
+    <HighlightCard title="UBC BIOMOD Club" date="May 2023 - Now" primacy={1}>
       <svg
         class="text-secondary"
         slot="icon"
@@ -57,9 +57,9 @@ import HighlightCard from "./HighlightCard.astro"
       submission, where we placed 5th internationally!
     </HighlightCard>
     <hr>
-    <HighlightCard title="UBC ARC" date="May 2023 - Dec 2023">
+    <HighlightCard title="UBC ARC" date="May 2023 - Dec 2023" primacy={0}>
       <svg
-      class="text-primary"
+        class="text-primary"
         slot="icon"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"

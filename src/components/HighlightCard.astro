@@ -2,12 +2,20 @@
 interface Props {
   title: string,
   date: string
+  primacy?: 0|1|2 // primary|secondary|tertiary
 }
 
-const { title, date } = Astro.props;
+const { title, date, primacy = 0 } = Astro.props;
 ---
 
-<div class="highlights_card">
+<div class:list={
+  [
+    "highlights_card",
+    {"highlights_card--primary": primacy === 0},
+    {"highlights_card--secondary": primacy === 1},
+    {"highlights_card--tertiary": primacy === 2}
+  ]
+}>
   <div class="highlights_card-header">
     <span class="highlights_card-title">
       <slot name="icon" />
@@ -35,8 +43,19 @@ const { title, date } = Astro.props;
   }
 
   .highlights_card:hover {
-    background-color: white;
     border: 1px solid black;
+  }
+
+  .highlights_card--primary:hover {
+    background-color: var(--primary);
+  }
+
+  .highlights_card--secondary:hover {
+    background-color: var(--secondary);
+  }
+
+  .highlights_card--tertiary:hover {
+    background-color: var(--tertiary);
   }
 
   .highlights_card-header {
