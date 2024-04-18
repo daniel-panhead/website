@@ -50,6 +50,7 @@ import Socials from "../components/socials/Socials.astro";
 			<h2 class="projects-header">
 				My Favorite Projects
 				<svg
+					class="projects-arrow"
 					aria-hidden="true"
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -61,7 +62,7 @@ import Socials from "../components/socials/Socials.astro";
 						stroke="currentColor"
 						stroke-linecap="round"
 						stroke-linejoin="round"
-						stroke-width="2"
+						
 						d="M12 19V5m0 14-4-4m4 4 4-4"></path>
 				</svg>
 			</h2>
@@ -204,6 +205,15 @@ import Socials from "../components/socials/Socials.astro";
 		flex-direction: row;
 		align-items: center;
 		gap: 4px;
+	}
+
+	.projects-arrow {
+		stroke-width: 2;
+		@media (min-width: 1024px) {
+			height: 30px;
+			width: 30px;
+			stroke-width: 3;
+		}
 	}
 
 	footer {
