@@ -6,12 +6,14 @@ import Socials from "../components/socials/Socials.astro";
   const homeAnchor = document.getElementById("home");
   const projectsAnchor = document.getElementById("projects");
 
-  if (window.location.pathname == homeAnchor?.getAttribute("href")) {
-    homeAnchor.style.fontWeight = "500";
-    if (projectsAnchor) projectsAnchor.style.fontWeight = "normal";
-  } else if (window.location.pathname == projectsAnchor?.getAttribute("href")) {
+  console.log(window.location.pathname)
+
+  if (projectsAnchor && window.location.pathname.match(/^\/projects\/?$/)) {
     projectsAnchor.style.fontWeight = "500";
     if (homeAnchor) homeAnchor.style.fontWeight = "normal";
+  } else if (homeAnchor && window.location.pathname.match(/^\/$/)) {
+    homeAnchor.style.fontWeight = "500";
+    if (projectsAnchor) projectsAnchor.style.fontWeight = "normal";
   }
 </script>
 
