@@ -35,6 +35,8 @@ const { title, showNav = true } = Astro.props;
 		--secondary-text: #b311ff;
 		--tertiary: #fdffb1;
 		--tertiary-text: #b58d00;
+
+		--default-border-radius: 9px;
 	}
 
 	.bg-primary { background-color: var(--primary); }
@@ -82,7 +84,7 @@ const { title, showNav = true } = Astro.props;
 		padding: 16px 20px;
 		cursor: pointer;
 		border: 1px solid black;
-		border-radius: 12px;
+		border-radius: var(--default-border-radius);
 		font-family: "Work Sans", system-ui, sans-serif;
 		font-size: 14px;
 		transition: all 100ms ease-out;

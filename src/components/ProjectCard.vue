@@ -104,7 +104,7 @@
     gap: 20px;
     padding: 28px;
     border: 1px solid black;
-    border-radius: 12px;
+    border-radius: var(--default-border-radius);
     background-color: white;
     box-shadow: -4px 4px 0 0 black;
   }
