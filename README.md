@@ -1,3 +1,5 @@
+![image](https://github.com/daniel-panhead/website/assets/57362494/ae8eda2c-f92a-4a24-a526-19a4b1cd8d04)
+
 # Personal Website
 
 My personal website :)
