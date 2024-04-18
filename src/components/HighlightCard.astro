@@ -26,6 +26,17 @@ const { title, date } = Astro.props;
     flex-direction: column;
     gap: 16px;
     font-size: 14px;
+    padding: 12px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    transition-property: all,border;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+  }
+
+  .highlights_card:hover {
+    background-color: white;
+    border: 1px solid black;
   }
 
   .highlights_card-header {
