@@ -1,9 +1,9 @@
 ---
-import Navbar from './Navbar.astro';
+import Navbar from "./Navbar.astro";
 
 interface Props {
 	title: string;
-	showNav?: boolean
+	showNav?: boolean;
 }
 
 const { title, showNav = true } = Astro.props;
@@ -19,6 +19,18 @@ const { title, showNav = true } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T6DTLYXZ5Z"
+	></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag("js", new Date());
+
+		gtag("config", "G-T6DTLYXZ5Z");
+	</script>
 	<body>
 		{showNav && <Navbar />}
 		<slot />
@@ -39,11 +51,18 @@ const { title, showNav = true } = Astro.props;
 		--default-border-radius: 9px;
 	}
 
-	.bg-primary { background-color: var(--primary); }
-	.text-primary { color: var(--primary-text) }
-	.text-secondary { color: var(--secondary-text) }
-	.text-tertiary { color: var(--tertiary-text) }
-
+	.bg-primary {
+		background-color: var(--primary);
+	}
+	.text-primary {
+		color: var(--primary-text);
+	}
+	.text-secondary {
+		color: var(--secondary-text);
+	}
+	.text-tertiary {
+		color: var(--tertiary-text);
+	}
 
 	html {
 		font-family: "Work Sans", system-ui, sans-serif;
