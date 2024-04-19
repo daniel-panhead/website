@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import HighlightsSection from "../components/HighlightsSection.astro";
 import headshot from "../assets/headshot.jpg";
 import ProjectsContentSection from "../components/ProjectsContentSection.astro";
@@ -16,7 +16,8 @@ import Socials from "../components/socials/Socials.astro";
 					alt="Headshot of Daniel"
 					class="bio-headshot--image"
 					loading="eager"
-				/>
+					widths={[600, headshot.width]}
+					sizes={`(max-width: 1024px) 600px, ${headshot.width}px`} />
 			</div>
 			<div class="content">
 				<header>
