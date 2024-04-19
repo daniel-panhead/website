@@ -78,8 +78,10 @@ import Socials from "../components/socials/Socials.astro";
 <style>
 
 	body {
-		animation: fadeInAnimation 0.7s ease;
-    animation-fill-mode: forwards;
+		@media (min-width: 1024px) {
+			animation: fadeInAnimation 0.7s ease;
+			animation-fill-mode: forwards;
+		}
 	}
 	@keyframes fadeInAnimation {
 			0% {
