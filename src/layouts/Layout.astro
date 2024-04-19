@@ -22,12 +22,13 @@ declare global {
 		<meta name="description" content="Daniel Pan Website" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="preconnect" href="https://www.googletagmanager.com">
+		<link rel="preconnect" href="https://www.google-analytics.com">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T6DTLYXZ5Z"
-	></script>
+	<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-T6DTLYXZ5Z"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		const gtag: Gtag.Gtag = function() {
