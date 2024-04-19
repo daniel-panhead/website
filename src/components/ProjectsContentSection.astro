@@ -16,7 +16,7 @@ const { maxProjects} = Astro.props;
   <div class="projects-cards">
     {projects.slice(0, maxProjects ?? projects.length).map((project) => (
       <ProjectCard
-        client:only
+        client:idle
         title={project.title} 
         tagline={project.tagline}
         link={project.link}

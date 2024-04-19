@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import ProjectCardPopup from "./ProjectCardPopup.vue";
 
 const breakpoints = useBreakpoints(breakpointsTailwind);
 const lgBreakpoint = breakpoints.greaterOrEqual('lg');
+const mounted = ref(false);
 
 const showPopup = ref(false);
 
@@ -29,14 +30,16 @@ const handleKeyPress = (payload: KeyboardEvent) => {
   }
 }
 
+onMounted(() => mounted.value = true);
+
 </script>
 
 <template>
   <div style="display: contents">
     <div @click="handleClickCard" @keydown="handleKeyPress"
       :class="{ 'project_card': true, 'project_card--popup': isPopup }"
-      :tabindex="!lgBreakpoint && !isPopup ? '0' : undefined"
-      :aria-haspopup="!lgBreakpoint && !isPopup ? 'dialog' : false">
+      :tabindex="mounted && !lgBreakpoint && !isPopup ? '0' : undefined"
+      :aria-haspopup="mounted && !lgBreakpoint && !isPopup ? 'dialog' : false">
       <div class="project_card-image">
         <slot name="img"></slot>
       </div>
