@@ -34,27 +34,24 @@ const { title, date, primacy = 0 } = Astro.props;
     flex-direction: column;
     gap: 16px;
     font-size: 14px;
-    padding: 12px;
-    border: 1px solid transparent;
-    border-radius: var(--default-border-radius);
-    transition-property: all,border;
-    transition-duration: 150ms;
-    transition-timing-function: ease;
-  }
-
-  .highlights_card:hover {
+    padding: 16px;
     border: 1px solid black;
+    border-radius: var(--default-border-radius);
+
+    @media (min-width: 1024px) {
+      padding: 24px;
+    }
   }
 
-  .highlights_card--primary:hover {
+  .highlights_card--primary {
     background-color: var(--primary);
   }
 
-  .highlights_card--secondary:hover {
+  .highlights_card--secondary {
     background-color: var(--secondary);
   }
 
-  .highlights_card--tertiary:hover {
+  .highlights_card--tertiary {
     background-color: var(--tertiary);
   }
 

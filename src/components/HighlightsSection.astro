@@ -29,7 +29,7 @@ import HighlightCard from "./HighlightCard.astro"
       developer, I'm working on our central experiment control interface
       using technologies like React, Python, Docker, Arduino, and MQTT.
     </HighlightCard>
-    <hr>
+    <!-- <hr> -->
     <HighlightCard title="UBC BIOMOD Club" date="May 2023 - Now" primacy={1}>
       <svg
         class="text-secondary"
@@ -56,7 +56,7 @@ import HighlightCard from "./HighlightCard.astro"
       website. I also helped develop the website for our 2023 competition
       submission, where we placed 5th internationally!
     </HighlightCard>
-    <hr>
+    <!-- <hr> -->
     <HighlightCard title="UBC ARC" date="May 2023 - Dec 2023" primacy={0}>
       <svg
         class="text-primary"
@@ -105,8 +105,11 @@ import HighlightCard from "./HighlightCard.astro"
 		gap: 20px;
 		@media (min-width: 1024px) {
 			flex-direction: row;
-			gap: 36px;
+			gap: 40px;
 		}
+    @media (min-width: 1280px) {
+      gap: 60px;
+    }
 	}
 
 	hr {
