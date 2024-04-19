@@ -5,23 +5,38 @@ import Email from "./Email.astro";
 import linkedin from "../../assets/linkedin.svg";
 
 interface Props {
-  boldText?: boolean
+  boldText?: boolean;
 }
 
 const { boldText } = Astro.props;
 ---
 
-<div class:list={["navbar-socials", {"navbar-socials--bold": boldText}]}>
-  <a class="navbar-social" href="https://github.com/daniel-panhead" target="_blank">
+<div class:list={["navbar-socials", { "navbar-socials--bold": boldText }]}>
+  <a
+    class="navbar-social"
+    href="https://github.com/daniel-panhead"
+    target="_blank"
+    aria-label="Go to my GitHub"
+  >
     <GitHub />
     <span class="navbar-social--label">GitHub</span>
   </a>
-  <a class="navbar-social" href="https://linkedin.com/in/danielpan04" target="_blank">
+  <a
+    class="navbar-social"
+    href="https://linkedin.com/in/danielpan04"
+    target="_blank"
+    aria-label="Go to my LinkedIn"
+  >
     <img src={linkedin.src} alt="" />
     <!-- <LinkedIn /> -->
     <span class="navbar-social--label">LinkedIn</span>
   </a>
-  <a class="navbar-social" href="mailto:danielpan.mail@gmail.com" target="_blank">
+  <a
+    class="navbar-social"
+    href="mailto:danielpan.mail@gmail.com"
+    target="_blank"
+    aria-label="Send me an email"
+  >
     <Email />
     <span class="navbar-social--label">Email</span>
   </a>
@@ -38,14 +53,13 @@ const { boldText } = Astro.props;
   .navbar-socials--bold {
     font-weight: 500;
   }
-  
+
   .navbar-social {
     display: flex;
     flex-direction: row;
     gap: 4px;
     align-items: center;
   }
-
 
   .navbar-social--label {
     display: none;

@@ -42,6 +42,7 @@
         <a
           :href="link"
           :class="{'project_card-link': true, 'project_card-link--responsive': !isPopup}"
+          :aria-label="`Check out more about ${title}`"
           target="_blank"
         >
           Check it out
