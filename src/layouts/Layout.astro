@@ -7,6 +7,12 @@ interface Props {
 }
 
 const { title, showNav = true } = Astro.props;
+
+declare global {
+	interface Window {
+		dataLayer: any[]
+	}
+}
 ---
 
 <!doctype html>
@@ -24,7 +30,8 @@ const { title, showNav = true } = Astro.props;
 	></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
-		function gtag() {
+		const gtag: Gtag.Gtag = function() {
+			// @ts-expect-error
 			dataLayer.push(arguments);
 		}
 		gtag("js", new Date());

@@ -6,8 +6,6 @@ import Socials from "../components/socials/Socials.astro";
   const homeAnchor = document.getElementById("home");
   const projectsAnchor = document.getElementById("projects");
 
-  console.log(window.location.pathname)
-
   if (projectsAnchor && window.location.pathname.match(/^\/projects\/?$/)) {
     projectsAnchor.style.fontWeight = "500";
     if (homeAnchor) homeAnchor.style.fontWeight = "normal";

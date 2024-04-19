@@ -16,5 +16,8 @@
     "astro": "^4.6.1",
     "typescript": "^5.4.5",
     "vue": "^3.4.23"
+  },
+  "devDependencies": {
+    "@types/gtag.js": "^0.0.19"
   }
 }
