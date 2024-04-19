@@ -1,9 +1,22 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
 const shown = defineModel<boolean>();
+
+const handleKeyDown = (payload: KeyboardEvent) => {
+  if (payload.key == "Escape") {
+    shown.value = false;
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('keydown', handleKeyDown);
+});
+
 </script>
 
 <template>
-  <div v-if="shown" class="project_card-popup">
+  <div v-if="shown" class="project_card-popup" @keydown="handleKeyDown">
     <div @click.self="shown = false" class="project_card-popup_container">
       <button @click="shown = false" class="unstyled_button">
         <svg class="project_card-close" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="29"
