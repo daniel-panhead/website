@@ -31,10 +31,11 @@ declare global {
 	<script
 		is:inline
 		async
+		type="text/partytown"
 		src="https://www.googletagmanager.com/gtag/js?id=G-T6DTLYXZ5Z"></script>
-	<script>
+	<script type="text/partytown">
 		window.dataLayer = window.dataLayer || [];
-		const gtag: Gtag.Gtag = function () {
+		window.gtag = function gtag() {
 			// @ts-expect-error
 			dataLayer.push(arguments);
 		};
