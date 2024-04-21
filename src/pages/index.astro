@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image, Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import HighlightsSection from "../components/HighlightsSection.astro";
 import headshot from "../assets/headshot.jpg";
 import ProjectsContentSection from "../components/ProjectsContentSection.astro";
@@ -12,12 +12,15 @@ import Socials from "../components/socials/Socials.astro";
 		<div class="bio">
 			<div class="bio-headshot">
 				<Image
+					id="bio-headshot--image"
 					src={headshot}
 					alt="Headshot of Daniel"
 					class="bio-headshot--image"
 					loading="eager"
 					widths={[600, headshot.width]}
-					sizes={`(max-width: 1024px) 600px, ${headshot.width}px`} />
+					sizes={`(max-width: 1024px) 600px, ${headshot.width}px`}
+					tabindex={0}
+				/>
 			</div>
 			<div class="content">
 				<header>
@@ -64,7 +67,6 @@ import Socials from "../components/socials/Socials.astro";
 						stroke="currentColor"
 						stroke-linecap="round"
 						stroke-linejoin="round"
-						
 						d="M12 19V5m0 14-4-4m4 4 4-4"></path>
 				</svg>
 			</h2>
@@ -72,12 +74,57 @@ import Socials from "../components/socials/Socials.astro";
 		</div>
 	</div>
 	<footer>
-		<a href="https://www.flaticon.com/free-icons/cat" title="cat icons" target="_blank">Cat icons created by Freepik - Flaticon</a>
+		<a
+			href="https://www.flaticon.com/free-icons/cat"
+			title="cat icons"
+			target="_blank">Cat icons created by Freepik - Flaticon</a
+		>
 	</footer>
 </Layout>
 
-<style>
+<script>
+	const shadowColors = [
+		"var(--primary-text)",
+		"var(--secondary-text)",
+		"var(--tertiary-text)",
+		"black",
+	];
+	const borderColors = [
+		"var(--primary)",
+		"var(--secondary)",
+		"var(--tertiary)",
+		"black",
+	];
+	let colorIndex = 0;
 
+	const headshotImage = document.getElementById("bio-headshot--image");
+
+	if (headshotImage) {
+		const incrementColors = () => {
+			headshotImage.style.color = borderColors[colorIndex];
+			headshotImage.style.borderColor = shadowColors[colorIndex];
+			colorIndex += 1;
+			colorIndex %= borderColors.length;
+		};
+
+		headshotImage.addEventListener("click", () => incrementColors());
+		headshotImage.addEventListener("keydown", (ev) => {
+			if (ev.key === " ") {
+				ev.preventDefault();
+				headshotImage.classList.add("bio-headshot--image--active");
+			}
+		});
+		headshotImage.addEventListener("keyup", (ev) => {
+			if (ev.key === " ") {
+				ev.preventDefault();
+				incrementColors();
+				headshotImage.classList.remove("bio-headshot--image--active");
+			}
+		});
+	}
+</script>
+
+<style>
 	body {
 		@media (min-width: 1024px) {
 			animation: fadeInAnimation 0.7s ease;
@@ -85,14 +132,14 @@ import Socials from "../components/socials/Socials.astro";
 		}
 	}
 	@keyframes fadeInAnimation {
-			0% {
-					opacity: 0;
-			}
-			100% {
-					opacity: 1;
-			}
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
 	}
-	
+
 	.page {
 		padding: 0 28px;
 		@media (min-width: 1024px) {
@@ -135,14 +182,24 @@ import Socials from "../components/socials/Socials.astro";
 
 	.bio-headshot--image {
 		position: relative;
-		border: 1px solid black;
-		box-shadow: -8px 8px 0 0 black;
+		color: black;
+		border: 2px solid;
+		box-shadow: -8px 8px 0 0;
 		width: 100%;
 		height: 100%;
 		border-radius: var(--default-border-radius);
+		transition-property: color, border-color;
+		transition-duration: 400ms;
+		transition-timing-function: ease;
 	}
 
 	.bio-headshot--image:active {
+		top: 8px;
+		right: 8px;
+		box-shadow: none;
+	}
+
+	.bio-headshot--image--active {
 		top: 8px;
 		right: 8px;
 		box-shadow: none;
