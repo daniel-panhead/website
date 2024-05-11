@@ -3,11 +3,11 @@ import HighlightCard from "./HighlightCard.astro";
 ---
 
 <div class="highlights">
-  <h2>Here's some highlights of my experience:</h2>
+  <h2>Here's what I've been doing:</h2>
   <div class="highlights-container">
     <HighlightCard title="Berlinguette Group" date="Jan 2024 - Now" primacy={2}>
       <svg
-        class="text-tertiary"
+        class="tertiary-icon"
         slot="icon"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -29,10 +29,10 @@ import HighlightCard from "./HighlightCard.astro";
       developer, I'm working on our central experiment control interface using
       technologies like React, Python, Docker, Arduino, and MQTT.
     </HighlightCard>
-    <!-- <hr> -->
+
     <HighlightCard title="UBC BIOMOD Club" date="May 2023 - Now" primacy={1}>
       <svg
-        class="text-secondary"
+        class="secondary-icon"
         slot="icon"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -56,10 +56,10 @@ import HighlightCard from "./HighlightCard.astro";
       helped develop the website for our 2023 competition submission, where we
       placed 5th internationally!
     </HighlightCard>
-    <!-- <hr> -->
+
     <HighlightCard title="UBC ARC" date="May 2023 - Dec 2023" primacy={0}>
       <svg
-        class="text-primary"
+        class="primary-icon"
         slot="icon"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -115,13 +115,22 @@ import HighlightCard from "./HighlightCard.astro";
     }
   }
 
-  hr {
-    width: 95%;
-    border-top: 1px solid black;
-    @media (min-width: 1024px) {
-      /* display: none; */
-      width: auto;
-      border-left: 1px solid black;
-    }
+  .primary-icon {
+    color: var(--primary);
+    background-color: var(--primary-text);
+    border-radius: 9999px;
+    padding: 8px;
+  }
+  .secondary-icon {
+    color: var(--secondary);
+    background-color: var(--secondary-text);
+    border-radius: 9999px;
+    padding: 8px;
+  }
+  .tertiary-icon {
+    color: var(--tertiary);
+    background-color: var(--tertiary-text);
+    border-radius: 9999px;
+    padding: 8px;
   }
 </style>

@@ -1,21 +1,21 @@
 ---
 interface Props {
-  title: string,
-  date: string
-  primacy?: 0|1|2 // primary|secondary|tertiary
+  title: string;
+  date: string;
+  primacy?: 0 | 1 | 2; // primary|secondary|tertiary
 }
 
 const { title, date, primacy = 0 } = Astro.props;
 ---
 
-<div class:list={
-  [
+<div
+  class:list={[
     "highlights_card",
-    {"highlights_card--primary": primacy === 0},
-    {"highlights_card--secondary": primacy === 1},
-    {"highlights_card--tertiary": primacy === 2}
-  ]
-}>
+    { "highlights_card--primary": primacy === 0 },
+    { "highlights_card--secondary": primacy === 1 },
+    { "highlights_card--tertiary": primacy === 2 },
+  ]}
+>
   <div class="highlights_card-header">
     <span class="highlights_card-title">
       <slot name="icon" />
@@ -35,11 +35,10 @@ const { title, date, primacy = 0 } = Astro.props;
     gap: 16px;
     font-size: 14px;
     padding: 16px;
-    border: 1px solid black;
-    border-radius: var(--default-border-radius);
+    box-shadow: -4px 4px 0 0 black;
 
     @media (min-width: 1024px) {
-      padding: 24px;
+      padding: 16px 20px;
     }
   }
 
@@ -59,15 +58,25 @@ const { title, date, primacy = 0 } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 600;
+
+    @media (min-width: 1024px) {
+      font-size: 18px;
+    }
   }
 
   .highlights_card-title {
     display: flex;
+    align-items: center;
     flex-direction: row;
     gap: 8px;
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 700;
+
+    @media (min-width: 1024px) {
+      font-size: 24px;
+    }
   }
 
   .highlights_card-body {
