@@ -48,6 +48,7 @@ const { boldText } = Astro.props;
     flex-direction: row;
     gap: 16px;
     align-items: center;
+    font-size: 18px;
   }
 
   .navbar-socials--bold {
@@ -59,6 +60,14 @@ const { boldText } = Astro.props;
     flex-direction: row;
     gap: 4px;
     align-items: center;
+    padding: 8px 8px;
+    border: 1px solid black;
+    border-radius: var(--default-border-radius);
+    box-shadow: -4px 4px 0 0 black;
+
+    @media (min-width: 1024px) {
+      padding: 8px 12px;
+    }
   }
 
   .navbar-social--label {

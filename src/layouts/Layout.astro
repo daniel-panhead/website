@@ -49,10 +49,11 @@ declare global {
 	</body>
 </html>
 <style is:global>
-	@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+	@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 	:root {
 		--page-background: #fffffb;
+		--section-background: #fbfaf9;
 		--primary: #b5d7ff;
 		--primary-text: #0a66d2;
 		--secondary: #efccff;
@@ -61,6 +62,9 @@ declare global {
 		--tertiary-text: #947300;
 
 		--default-border-radius: 9px;
+		--default-padding-x: 28px;
+		--default-padding-x-md: 60px;
+		--default-padding-x-lg: 92px;
 	}
 
 	.bg-primary {
@@ -84,11 +88,12 @@ declare global {
 	body {
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
 		padding-bottom: 20px;
+		margin: 0;
 	}
 
 	h1 {
+		font-family: "Public Sans", system-ui, sans-serif;
 		font-weight: 500;
 		font-size: 56px;
 		@media (min-width: 1024px) {
@@ -97,6 +102,7 @@ declare global {
 	}
 
 	h2 {
+		font-family: "Public Sans", system-ui, sans-serif;
 		font-weight: 500;
 		font-size: 24px;
 		margin: 0;

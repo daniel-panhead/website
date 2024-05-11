@@ -7,11 +7,11 @@ import Socials from "../components/socials/Socials.astro";
   const projectsAnchor = document.getElementById("projects");
 
   if (projectsAnchor && window.location.pathname.match(/^\/projects\/?$/)) {
-    projectsAnchor.style.fontWeight = "500";
-    if (homeAnchor) homeAnchor.style.fontWeight = "normal";
+    projectsAnchor.style.fontWeight = "700";
+    if (homeAnchor) homeAnchor.style.fontWeight = "500";
   } else if (homeAnchor && window.location.pathname.match(/^\/$/)) {
-    homeAnchor.style.fontWeight = "500";
-    if (projectsAnchor) projectsAnchor.style.fontWeight = "normal";
+    homeAnchor.style.fontWeight = "700";
+    if (projectsAnchor) projectsAnchor.style.fontWeight = "500";
   }
 </script>
 
@@ -27,26 +27,33 @@ import Socials from "../components/socials/Socials.astro";
 
 <style>
   .navbar-container {
-    font-size: 18px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 12px 20px;
+    font-size: 20px;
+    font-weight: 500;
+    border-bottom: 2px solid black;
+    padding: 20px 20px 24px 20px;
+
     @media (min-width: 1024px) {
-      padding: 20px 48px;
+      font-size: 24px;
+      border-bottom: 3px solid black;
+      padding: 20px 48px 24px 48px;
     }
   }
 
   ul.navbar-routes {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
     list-style-type: none;
     margin: 0;
     padding-left: 0;
   }
-  ul.navbar-routes li {
-    display: inline-block;
-  }
+
   ul.navbar-routes li a {
-    padding: 0px 12px;
+    padding: 0px 8px;
   }
 
   
