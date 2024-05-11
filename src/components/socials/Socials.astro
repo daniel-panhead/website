@@ -48,6 +48,7 @@ const { boldText } = Astro.props;
     flex-direction: row;
     gap: 16px;
     align-items: center;
+    font-size: 18px;
   }
 
   .navbar-socials--bold {
@@ -59,6 +60,28 @@ const { boldText } = Astro.props;
     flex-direction: row;
     gap: 4px;
     align-items: center;
+    padding: 8px 8px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: var(--default-border-radius);
+    box-shadow: -4px 4px 0 0 black;
+    transition: all 100ms ease-out;
+
+    @media (min-width: 1024px) {
+      padding: 12px;
+    }
+  }
+
+  .navbar-social:hover {
+    box-shadow: none;
+    opacity: 1;
+    transform: translate(-4px, 4px);
+  }
+
+  .navbar-social:active {
+    box-shadow: none;
+    transform: translate(-4px, 4px);
+    filter: brightness(80%);
   }
 
   .navbar-social--label {

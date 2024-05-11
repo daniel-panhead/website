@@ -49,7 +49,7 @@ onMounted(() => mounted.value = true);
             <h3>{{ title }}</h3>
             <p>{{ tagline }}</p>
           </div>
-          <p :class="isPopup ? 'project_card-description--popup' : 'project_card-description'">
+          <p :class="{ 'project_card-description': !isPopup }">
             <slot></slot>
           </p>
         </div>
@@ -92,10 +92,10 @@ onMounted(() => mounted.value = true);
   align-items: center;
   gap: 20px;
   padding: 28px;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: var(--default-border-radius);
   background-color: white;
-  box-shadow: -4px 4px 0 0 black;
+  box-shadow: -8px 8px 0 0 black;
 }
 
 .project_card:active:not(:focus-within) {
@@ -121,6 +121,7 @@ onMounted(() => mounted.value = true);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-size: 18px;
 }
 
 .project_card-content {
@@ -140,15 +141,14 @@ onMounted(() => mounted.value = true);
 .project_card-header h3 {
   margin: 0;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .project_card-header p {
-  font-size: 18px;
   margin: 0;
 
   @media (min-width: 1024px) {
-    font-weight: 500;
+    font-weight: 600;
   }
 }
 
@@ -158,15 +158,10 @@ onMounted(() => mounted.value = true);
 
 .project_card-description {
   display: none;
-  font-size: 18px;
 
   @media (min-width: 1024px) {
     display: block;
   }
-}
-
-.project_card-description--popup {
-  font-size: 18px;
 }
 
 .project_card-link {
@@ -175,6 +170,7 @@ onMounted(() => mounted.value = true);
   flex-direction: row;
   align-items: center;
   color: var(--primary-text);
+  font-weight: 600;
 }
 
 .project_card-link--responsive {

@@ -1,13 +1,13 @@
 ---
-import HighlightCard from "./HighlightCard.astro"
+import HighlightCard from "./HighlightCard.astro";
 ---
 
 <div class="highlights">
-  <h2>Here's some highlights of my experience:</h2>
+  <h2>Here's what I've been doing:</h2>
   <div class="highlights-container">
     <HighlightCard title="Berlinguette Group" date="Jan 2024 - Now" primacy={2}>
       <svg
-        class="text-tertiary"
+        class="tertiary-icon"
         slot="icon"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -26,13 +26,13 @@ import HighlightCard from "./HighlightCard.astro"
 
       At Berlinguette Group, we're doing experimental research into uses of
       electrochemistry to enhance nuclear fusion rates. As a co-op software
-      developer, I'm working on our central experiment control interface
-      using technologies like React, Python, Docker, Arduino, and MQTT.
+      developer, I'm working on our central experiment control interface using
+      technologies like React, Python, Docker, Arduino, and MQTT.
     </HighlightCard>
-    <!-- <hr> -->
+
     <HighlightCard title="UBC BIOMOD Club" date="May 2023 - Now" primacy={1}>
       <svg
-        class="text-secondary"
+        class="secondary-icon"
         slot="icon"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -51,15 +51,15 @@ import HighlightCard from "./HighlightCard.astro"
       </svg>
 
       Our club competes in the international BIOMOD competition, which is a
-      biomolecular design competition. As a co-lead for the website team,
-      I'm guiding a team of 8 to overhaul and modernize our club's
-      website. I also helped develop the website for our 2023 competition
-      submission, where we placed 5th internationally!
+      biomolecular design competition. As a co-lead for the website team, I'm
+      guiding a team of 8 to overhaul and modernize our club's website. I also
+      helped develop the website for our 2023 competition submission, where we
+      placed 5th internationally!
     </HighlightCard>
-    <!-- <hr> -->
+
     <HighlightCard title="UBC ARC" date="May 2023 - Dec 2023" primacy={0}>
       <svg
-        class="text-primary"
+        class="primary-icon"
         slot="icon"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -79,46 +79,58 @@ import HighlightCard from "./HighlightCard.astro"
 
       UBC Advanced Research Computing provides high-performance compute
       capabilities to researchers and students at the university. As a
-      datacentre technician intern, I provided support and maintenance for
-      over 450 servers consisting of nearly 16,000 CPU cores, 200 GPUs, and
-      3 petabytes of storage capacity.
+      datacentre technician intern, I provided support and maintenance for over
+      450 servers consisting of nearly 16,000 CPU cores, 200 GPUs, and 3
+      petabytes of storage capacity.
     </HighlightCard>
   </div>
 </div>
 
 <style>
   .highlights {
-		display: flex;
-		flex-direction: column;
-		gap: 28px;
-		padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 12px var(--default-padding-x);
 
-    @media (min-width: 1024px) {
+    @media (min-width: 768px) {
       gap: 28px;
-      padding: 24px 0;
+      padding: 24px var(--default-padding-x-md);
     }
-	}
+    @media (min-width: 1024px) {
+      padding: 24px var(--default-padding-x-lg);
+    }
+  }
 
-	.highlights-container {
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-		@media (min-width: 1024px) {
-			flex-direction: row;
-			gap: 40px;
-		}
+  .highlights-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @media (min-width: 1024px) {
+      flex-direction: row;
+      gap: 40px;
+    }
     @media (min-width: 1280px) {
       gap: 60px;
     }
-	}
+  }
 
-	hr {
-		width: 95%;
-		border-top: 1px solid black;
-		@media (min-width: 1024px) {
-			/* display: none; */
-      width: auto;
-      border-left: 1px solid black;
-		}
-	}
+  .primary-icon {
+    color: var(--primary);
+    background-color: var(--primary-text);
+    border-radius: 9999px;
+    padding: 8px;
+  }
+  .secondary-icon {
+    color: var(--secondary);
+    background-color: var(--secondary-text);
+    border-radius: 9999px;
+    padding: 8px;
+  }
+  .tertiary-icon {
+    color: var(--tertiary);
+    background-color: var(--tertiary-text);
+    border-radius: 9999px;
+    padding: 8px;
+  }
 </style>
