@@ -7,6 +7,48 @@ import ProjectsContentSection from "../components/ProjectsContentSection.astro";
 import Socials from "../components/socials/Socials.astro";
 ---
 
+<script>
+	const heroIntro = document.getElementById("hero_title--intro");
+	if (heroIntro) {
+		let keepShowChinese = false;
+
+		const showChinese = () => {
+			if (!keepShowChinese) {
+				heroIntro.innerText = "你好，我是";
+				heroIntro.style.backgroundColor = "var(--secondary)";
+			}
+		}
+		const hideChinese = () => {
+			if (!keepShowChinese) {
+				heroIntro.innerText = "Hi, I'm";
+				heroIntro.style.backgroundColor = "transparent";
+			}
+		}
+
+		const toggleText = () => {
+			if (keepShowChinese) {
+				heroIntro.innerText = "Hi, I'm";
+				heroIntro.style.backgroundColor = "transparent";
+				keepShowChinese = false;
+			} else {
+				heroIntro.innerText = "你好，我是";
+				heroIntro.style.backgroundColor = "var(--secondary)";
+				keepShowChinese = true;
+			}
+		};
+
+		heroIntro.addEventListener("mouseenter", () => showChinese());
+		heroIntro.addEventListener("mouseleave", () => hideChinese());
+		heroIntro.addEventListener("click", () => toggleText());
+		heroIntro.addEventListener("keypress", (ev) => {
+			if (ev.key === " ") {
+				ev.preventDefault();
+				toggleText();
+			}
+		});
+	}
+</script>
+
 <Layout title="Daniel Pan">
 	<div class="page">
 		<div class="bio">
@@ -25,7 +67,7 @@ import Socials from "../components/socials/Socials.astro";
 			<div class="content">
 				<header>
 					<h1 class="hero_title">
-						Hi, I'm
+						<span id="hero_title--intro" tabindex="0">Hi, I'm</span>
 						<br />
 						<b>Daniel.</b> 👋
 					</h1>
@@ -236,7 +278,12 @@ import Socials from "../components/socials/Socials.astro";
 	}
 
 	.hero_title {
+		line-height: 125%;
 		margin: 0;
+	}
+
+	#hero_title--intro {
+		transition: background-color 300ms linear;
 	}
 
 	.contact {
