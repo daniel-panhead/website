@@ -12,28 +12,59 @@ import Socials from "../components/socials/Socials.astro";
 	if (heroIntro) {
 		let keepShowChinese = false;
 
+		/**
+		 * Doesn't work if replacementText is less than half the length of
+		 * innerText - it only cuts off one character each iteration
+		 */
+		const replaceText = (replacementText: string, currentIndex: number) => {
+			const currentText = heroIntro.innerText;
+			if (
+				currentIndex >= replacementText.length &&
+				currentIndex >= currentText.length
+			) {
+				return;
+			}
+
+			let newText = currentText.slice(0, currentIndex);
+			if (currentIndex < replacementText.length) {
+				newText += replacementText[currentIndex];
+			}
+			// If replacementText is longer than currentText,
+			// slicing past innerText.length will simply return ""
+			newText += currentText.slice(currentIndex + 1);
+
+			const lengthDiff = currentText.length - replacementText.length;
+			// totally arbitrary threshold to start replacing chars lol
+			if (lengthDiff > 0 && currentIndex > replaceText.length - lengthDiff) {
+				// If currentText is longer than replacementText,
+				// cut off one character from the end at each iteration
+				newText = newText.slice(0, -1);
+			}
+
+			heroIntro.innerText = newText;
+			setTimeout(replaceText, 30, replacementText, currentIndex + 1);
+		};
+
 		const showChinese = () => {
 			if (!keepShowChinese) {
-				heroIntro.innerText = "你好，我是";
+				replaceText("你好，我是", 0);
 				heroIntro.style.backgroundColor = "var(--secondary)";
 			}
-		}
+		};
 		const hideChinese = () => {
 			if (!keepShowChinese) {
-				heroIntro.innerText = "Hi, I'm";
+				replaceText("Hi, I'm", 0);
 				heroIntro.style.backgroundColor = "transparent";
 			}
-		}
+		};
 
 		const toggleText = () => {
-			if (keepShowChinese) {
-				heroIntro.innerText = "Hi, I'm";
-				heroIntro.style.backgroundColor = "transparent";
-				keepShowChinese = false;
-			} else {
-				heroIntro.innerText = "你好，我是";
-				heroIntro.style.backgroundColor = "var(--secondary)";
+			if (!keepShowChinese) {
+				showChinese();
 				keepShowChinese = true;
+			} else {
+				keepShowChinese = false;
+				hideChinese();
 			}
 		};
 
