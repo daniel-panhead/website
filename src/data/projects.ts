@@ -1,9 +1,25 @@
+import workfly from "../assets/workfly.png";  
 import profound from "../assets/profound.png";
 import sherlockify from "../assets/sherlockify.png";
 import biomod from "../assets/biomod.png";
 import drSprouts from "../assets/dr-sprouts.png";
 
 export const projects = [
+  {
+    title: "Workfly",
+    tagline: "Drag-and-drop CI/CD workflow builder!",
+    link: "https://github.com/tryworkfly/workfly",
+    img: workfly,
+    description: `
+    Learning how to automate tasks with CI/CD can be quite daunting for beginners,
+    but using Workfly, anyone can leverage the power of CI/CD without having to
+    become an expert in writing configuration files. Workfly is a drag-and-drop
+    block editor that allows you to quickly create workflows by connecting steps
+    together in a visual block editor. I created the backend that converts visual
+    steps into a GitHub Actions workflow file and automatically adds the workflow
+    to your repository.
+    `,
+  },
   {
     title: "ProFound",
     tagline: "The world's first AI cofounder!",
@@ -15,7 +31,7 @@ export const projects = [
     the AI-powered no-code prototyper which can turn ideas into mockups in minutes, not days.
     Using Svelte, Tailwind, and WebSockets, I implemented the frontend interface to let users
     chat with ProFound and see the previews of their mockups.
-    `
+    `,
   },
   {
     title: "Sherlockify",
@@ -27,7 +43,7 @@ export const projects = [
     to let you search your friends online over thousands of social media sites!
     I developed a backend server to interface with Sherlock using Python and FastAPI,
     and deployed to Google Cloud using Cloud Run + an automated Cloud Build pipeline.
-    `
+    `,
   },
   {
     title: "UBC BIOMOD 2023",
@@ -38,7 +54,7 @@ export const projects = [
     As part of a team of four, I helped developed a website for the UBC BIOMOD club's 2023
     submission to the BIOMOD molecular design competition, where our team placed fifth internationally!
     We had a lot of fun fully designing the website from scratch and developing with Vue.js and Tailwind.
-    `
+    `,
   },
   {
     title: "Dr. Sprouts",
@@ -51,6 +67,6 @@ export const projects = [
     Dr. Sprouts can give you relevant results and advice backed by real scientific papers.
     I developed a chat interface for the program using React and Typescript to let you chat
     with Dr. Sprouts in real time!
-    `
-  }
+    `,
+  },
 ];
