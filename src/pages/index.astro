@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import HighlightsSection from "../components/HighlightsSection.astro";
-import headshot from "../assets/headshot.png";
+import shot from "../assets/shot.jpg";
 import ProjectsContentSection from "../components/ProjectsContentSection.astro";
 import Socials from "../components/socials/Socials.astro";
 ---
@@ -16,12 +16,17 @@ import Socials from "../components/socials/Socials.astro";
 		 * Doesn't work if replacementText is less than half the length of
 		 * innerText - it only cuts off one character each iteration
 		 */
-		const replaceText = (replacementText: string, currentIndex: number) => {
+		const replaceText = (
+			replacementText: string,
+			currentIndex: number,
+			callback?: () => void
+		) => {
 			const currentText = heroIntro.innerText;
 			if (
 				currentIndex >= replacementText.length &&
 				currentIndex >= currentText.length
 			) {
+				callback?.();
 				return;
 			}
 
@@ -42,18 +47,23 @@ import Socials from "../components/socials/Socials.astro";
 			}
 
 			heroIntro.innerText = newText;
-			setTimeout(replaceText, 30, replacementText, currentIndex + 1);
+			setTimeout(replaceText, 30, replacementText, currentIndex + 1, callback);
 		};
 
 		const showChinese = () => {
 			if (!keepShowChinese) {
 				replaceText("你好，我是", 0);
+				heroIntro.lang = "zh-CN";
+				heroIntro.style.fontFamily = "Noto Sans SC";
 				heroIntro.style.backgroundColor = "var(--secondary)";
 			}
 		};
 		const hideChinese = () => {
 			if (!keepShowChinese) {
-				replaceText("Hi, I'm", 0);
+				replaceText("Hi, I'm", 0, () => {
+					heroIntro.lang = "en-US";
+					heroIntro.style.fontFamily = '';
+				});
 				heroIntro.style.backgroundColor = "transparent";
 			}
 		};
@@ -86,12 +96,12 @@ import Socials from "../components/socials/Socials.astro";
 			<div class="bio-headshot">
 				<Image
 					id="bio-headshot--image"
-					src={headshot}
+					src={shot}
 					alt="Headshot of Daniel"
 					class="bio-headshot--image"
 					loading="eager"
-					widths={[600, headshot.width]}
-					sizes={`(max-width: 1024px) 600px, ${headshot.width}px`}
+					widths={[600, shot.width]}
+					sizes={`(max-width: 1024px) 600px, ${shot.width}px`}
 					tabindex={0}
 				/>
 			</div>
