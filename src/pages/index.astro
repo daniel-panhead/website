@@ -110,7 +110,10 @@ import Socials from "../components/socials/Socials.astro";
           <h1 class="hero_title">
             <span id="hero_title--intro" tabindex="0">Hi, I'm</span>
             <br />
-            <b>Daniel.</b> 👋
+            <div class="hero_title--name">
+              <b>Daniel.</b>
+              <span class="hero_title--emoji">🤠</span>
+            </div>
           </h1>
         </header>
         <main>
@@ -123,9 +126,6 @@ import Socials from "../components/socials/Socials.astro";
             to spend my free time doing
             <span class="text-tertiary emph">web development</span>, learning
             about infrastructure, and bouldering!
-            <!-- I'm currently a co-op software developer for
-						<span class="text-tertiary">Berlinguette Group</span>, where I'm
-						helping to support nuclear fusion research! -->
           </p>
           <div class="contact">
             <span>Contact me:</span>
@@ -325,6 +325,23 @@ import Socials from "../components/socials/Socials.astro";
 
   #hero_title--intro {
     transition: background-color 300ms linear;
+  }
+
+  .hero_title--name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @media (min-width: 1024px) {
+      gap: 16px;
+    }
+  }
+
+  .hero_title--emoji {
+    font-size: 32px;
+    @media (min-width: 1024px) {
+      font-size: 48px;
+    }
   }
 
   .contact {
