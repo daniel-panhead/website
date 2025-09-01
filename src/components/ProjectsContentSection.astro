@@ -40,23 +40,7 @@ const { maxProjects } = Astro.props;
     maxProjects && maxProjects < projects.length && (
       <a href="/projects" class="btn bg-primary">
         <Image src={cat} alt="Cat" />
-        <span>
-          See more projects
-          <svg
-            width="12"
-            height="6"
-            viewBox="0 0 12 6"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10.6666 3H1.33325M10.6666 3L7.99992 5M10.6666 3L7.99992 1"
-              stroke="black"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
+        See more projects →
       </a>
     )
   }
