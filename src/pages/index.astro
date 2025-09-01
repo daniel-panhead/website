@@ -8,373 +8,373 @@ import Socials from "../components/socials/Socials.astro";
 ---
 
 <script>
-	const heroIntro = document.getElementById("hero_title--intro");
-	if (heroIntro) {
-		let keepShowChinese = false;
+  const heroIntro = document.getElementById("hero_title--intro");
+  if (heroIntro) {
+    let keepShowChinese = false;
 
-		/**
-		 * Doesn't work if replacementText is less than half the length of
-		 * innerText - it only cuts off one character each iteration
-		 */
-		const replaceText = (
-			replacementText: string,
-			currentIndex: number,
-			callback?: () => void
-		) => {
-			const currentText = heroIntro.innerText;
-			if (
-				currentIndex >= replacementText.length &&
-				currentIndex >= currentText.length
-			) {
-				callback?.();
-				return;
-			}
+    /**
+     * Doesn't work if replacementText is less than half the length of
+     * innerText - it only cuts off one character each iteration
+     */
+    const replaceText = (
+      replacementText: string,
+      currentIndex: number,
+      callback?: () => void,
+    ) => {
+      const currentText = heroIntro.innerText;
+      if (
+        currentIndex >= replacementText.length &&
+        currentIndex >= currentText.length
+      ) {
+        callback?.();
+        return;
+      }
 
-			let newText = currentText.slice(0, currentIndex);
-			if (currentIndex < replacementText.length) {
-				newText += replacementText[currentIndex];
-			}
-			// If replacementText is longer than currentText,
-			// slicing past innerText.length will simply return ""
-			newText += currentText.slice(currentIndex + 1);
+      let newText = currentText.slice(0, currentIndex);
+      if (currentIndex < replacementText.length) {
+        newText += replacementText[currentIndex];
+      }
+      // If replacementText is longer than currentText,
+      // slicing past innerText.length will simply return ""
+      newText += currentText.slice(currentIndex + 1);
 
-			const lengthDiff = currentText.length - replacementText.length;
-			// totally arbitrary threshold to start replacing chars lol
-			if (lengthDiff > 0 && currentIndex > replaceText.length - lengthDiff) {
-				// If currentText is longer than replacementText,
-				// cut off one character from the end at each iteration
-				newText = newText.slice(0, -1);
-			}
+      const lengthDiff = currentText.length - replacementText.length;
+      // totally arbitrary threshold to start replacing chars lol
+      if (lengthDiff > 0 && currentIndex > replaceText.length - lengthDiff) {
+        // If currentText is longer than replacementText,
+        // cut off one character from the end at each iteration
+        newText = newText.slice(0, -1);
+      }
 
-			heroIntro.innerText = newText;
-			setTimeout(replaceText, 30, replacementText, currentIndex + 1, callback);
-		};
+      heroIntro.innerText = newText;
+      setTimeout(replaceText, 30, replacementText, currentIndex + 1, callback);
+    };
 
-		const showChinese = () => {
-			if (!keepShowChinese) {
-				replaceText("你好，我是", 0);
-				heroIntro.lang = "zh-CN";
-				heroIntro.style.fontFamily = "Noto Sans SC";
-				heroIntro.style.backgroundColor = "var(--secondary)";
-			}
-		};
-		const hideChinese = () => {
-			if (!keepShowChinese) {
-				replaceText("Hi, I'm", 0, () => {
-					heroIntro.lang = "en-US";
-					heroIntro.style.fontFamily = '';
-				});
-				heroIntro.style.backgroundColor = "transparent";
-			}
-		};
+    const showChinese = () => {
+      if (!keepShowChinese) {
+        replaceText("你好，我是", 0);
+        heroIntro.lang = "zh-CN";
+        heroIntro.style.fontFamily = "Noto Sans SC";
+        heroIntro.style.backgroundColor = "var(--secondary)";
+      }
+    };
+    const hideChinese = () => {
+      if (!keepShowChinese) {
+        replaceText("Hi, I'm", 0, () => {
+          heroIntro.lang = "en-US";
+          heroIntro.style.fontFamily = "";
+        });
+        heroIntro.style.backgroundColor = "transparent";
+      }
+    };
 
-		const toggleText = () => {
-			if (!keepShowChinese) {
-				showChinese();
-				keepShowChinese = true;
-			} else {
-				keepShowChinese = false;
-				hideChinese();
-			}
-		};
+    const toggleText = () => {
+      if (!keepShowChinese) {
+        showChinese();
+        keepShowChinese = true;
+      } else {
+        keepShowChinese = false;
+        hideChinese();
+      }
+    };
 
-		heroIntro.addEventListener("mouseenter", () => showChinese());
-		heroIntro.addEventListener("mouseleave", () => hideChinese());
-		heroIntro.addEventListener("click", () => toggleText());
-		heroIntro.addEventListener("keypress", (ev) => {
-			if (ev.key === " ") {
-				ev.preventDefault();
-				toggleText();
-			}
-		});
-	}
+    heroIntro.addEventListener("mouseenter", () => showChinese());
+    heroIntro.addEventListener("mouseleave", () => hideChinese());
+    heroIntro.addEventListener("click", () => toggleText());
+    heroIntro.addEventListener("keypress", (ev) => {
+      if (ev.key === " ") {
+        ev.preventDefault();
+        toggleText();
+      }
+    });
+  }
 </script>
 
 <Layout title="Daniel Pan">
-	<div class="page">
-		<div class="bio">
-			<div class="bio-headshot">
-				<Image
-					id="bio-headshot--image"
-					src={shot}
-					alt="Headshot of Daniel"
-					class="bio-headshot--image"
-					loading="eager"
-					widths={[600, shot.width]}
-					sizes={`(max-width: 1024px) 600px, ${shot.width}px`}
-					tabindex={0}
-				/>
-			</div>
-			<div class="content">
-				<header>
-					<h1 class="hero_title">
-						<span id="hero_title--intro" tabindex="0">Hi, I'm</span>
-						<br />
-						<b>Daniel.</b> 👋
-					</h1>
-				</header>
-				<main>
-					<p>
-						I'm a
-						<span class="text-primary emph"> Computer Science </span> student at
-						<span class="text-secondary emph"
-							>University of British Columbia</span
-						>. I love making projects (and occasionally finishing them). I like
-						to spend my free time doing
-						<span class="text-tertiary emph">web development</span>, learning
-						about infrastructure, and bouldering!
-						<!-- I'm currently a co-op software developer for
+  <div class="page">
+    <div class="bio">
+      <div class="bio-headshot">
+        <Image
+          id="bio-headshot--image"
+          src={shot}
+          alt="Headshot of Daniel"
+          class="bio-headshot--image"
+          loading="eager"
+          widths={[600, shot.width]}
+          sizes={`(max-width: 1024px) 600px, ${shot.width}px`}
+          tabindex={0}
+        />
+      </div>
+      <div class="content">
+        <header>
+          <h1 class="hero_title">
+            <span id="hero_title--intro" tabindex="0">Hi, I'm</span>
+            <br />
+            <b>Daniel.</b> 👋
+          </h1>
+        </header>
+        <main>
+          <p>
+            I'm a
+            <span class="text-primary emph"> Computer Science </span> student at
+            <span class="text-secondary emph"
+              >University of British Columbia</span
+            >. I love making projects (and occasionally finishing them). I like
+            to spend my free time doing
+            <span class="text-tertiary emph">web development</span>, learning
+            about infrastructure, and bouldering!
+            <!-- I'm currently a co-op software developer for
 						<span class="text-tertiary">Berlinguette Group</span>, where I'm
 						helping to support nuclear fusion research! -->
-					</p>
-					<div class="contact">
-						<span>Contact me:</span>
-						<Socials />
-					</div>
-				</main>
-			</div>
-		</div>
-		<HighlightsSection />
-		<div class="projects">
-			<h2 class="projects-header">
-				My Favorite Projects
-				<svg
-					class="projects-arrow"
-					aria-hidden="true"
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					fill="none"
-					viewBox="0 0 24 24"
-				>
-					<path
-						stroke="currentColor"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M12 19V5m0 14-4-4m4 4 4-4"></path>
-				</svg>
-			</h2>
-			<ProjectsContentSection maxProjects={2} />
-		</div>
-	</div>
-	<footer>
-		<a
-			href="https://www.flaticon.com/free-icons/cat"
-			title="cat icons"
-			target="_blank">Cat icons created by Freepik - Flaticon</a
-		>
-	</footer>
+          </p>
+          <div class="contact">
+            <span>Contact me:</span>
+            <Socials />
+          </div>
+        </main>
+      </div>
+    </div>
+    <HighlightsSection />
+    <div class="projects">
+      <h2 class="projects-header">
+        My Favorite Projects
+        <svg
+          class="projects-arrow"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 19V5m0 14-4-4m4 4 4-4"></path>
+        </svg>
+      </h2>
+      <ProjectsContentSection maxProjects={2} />
+    </div>
+  </div>
+  <footer>
+    <a
+      href="https://www.flaticon.com/free-icons/cat"
+      title="cat icons"
+      target="_blank">Cat icons created by Freepik - Flaticon</a
+    >
+  </footer>
 </Layout>
 
 <script>
-	const shadowColors = [
-		"var(--primary-text)",
-		"var(--secondary-text)",
-		"var(--tertiary-text)",
-		"black",
-	];
-	const borderColors = [
-		"var(--primary)",
-		"var(--secondary)",
-		"var(--tertiary)",
-		"black",
-	];
-	let colorIndex = 0;
+  const shadowColors = [
+    "var(--primary-text)",
+    "var(--secondary-text)",
+    "var(--tertiary-text)",
+    "black",
+  ];
+  const borderColors = [
+    "var(--primary)",
+    "var(--secondary)",
+    "var(--tertiary)",
+    "black",
+  ];
+  let colorIndex = 0;
 
-	const headshotImage = document.getElementById("bio-headshot--image");
+  const headshotImage = document.getElementById("bio-headshot--image");
 
-	if (headshotImage) {
-		const incrementColors = () => {
-			headshotImage.style.color = borderColors[colorIndex];
-			headshotImage.style.borderColor = shadowColors[colorIndex];
-			colorIndex += 1;
-			colorIndex %= borderColors.length;
-		};
+  if (headshotImage) {
+    const incrementColors = () => {
+      headshotImage.style.color = borderColors[colorIndex];
+      headshotImage.style.borderColor = shadowColors[colorIndex];
+      colorIndex += 1;
+      colorIndex %= borderColors.length;
+    };
 
-		headshotImage.addEventListener("click", () => incrementColors());
-		headshotImage.addEventListener("keydown", (ev) => {
-			if (ev.key === " ") {
-				ev.preventDefault();
-				headshotImage.classList.add("bio-headshot--image--active");
-			}
-		});
-		headshotImage.addEventListener("keyup", (ev) => {
-			if (ev.key === " ") {
-				ev.preventDefault();
-				incrementColors();
-				headshotImage.classList.remove("bio-headshot--image--active");
-			}
-		});
-	}
+    headshotImage.addEventListener("click", () => incrementColors());
+    headshotImage.addEventListener("keydown", (ev) => {
+      if (ev.key === " ") {
+        ev.preventDefault();
+        headshotImage.classList.add("bio-headshot--image--active");
+      }
+    });
+    headshotImage.addEventListener("keyup", (ev) => {
+      if (ev.key === " ") {
+        ev.preventDefault();
+        incrementColors();
+        headshotImage.classList.remove("bio-headshot--image--active");
+      }
+    });
+  }
 </script>
 
 <style>
-	body {
-		@media (min-width: 1024px) {
-			animation: fadeInAnimation 0.7s ease;
-			animation-fill-mode: forwards;
-		}
-	}
-	@keyframes fadeInAnimation {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
+  body {
+    @media (min-width: 1024px) {
+      animation: fadeInAnimation 0.7s ease;
+      animation-fill-mode: forwards;
+    }
+  }
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
-	.bio {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		align-self: stretch;
-		gap: 32px;
-		padding: 32px var(--default-padding-x);
-		background-color: var(--section-background);
+  .bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    gap: 32px;
+    padding: 32px var(--default-padding-x);
+    background-color: var(--section-background);
 
-		@media (min-width: 768px) {
-			flex-direction: row;
-			justify-content: space-between;
-			padding: 60px var(--default-padding-x-md);
-		}
-		@media (min-width: 1024px) {
-			padding: 60px var(--default-padding-x-lg);
-		}
-	}
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 60px var(--default-padding-x-md);
+    }
+    @media (min-width: 1024px) {
+      padding: 60px var(--default-padding-x-lg);
+    }
+  }
 
-	.bio-headshot {
-		width: 50%;
-		/* background: linear-gradient(to right, var(--primary), var(--secondary), var(--tertiary)); */
-		/* border: 1px solid black; */
-		border-radius: var(--default-border-radius);
-		padding: 2px;
-		/* box-shadow: -8px 8px 0 0 black; */
-		@media (min-width: 768px) {
-			order: 1;
-			width: 30%;
-			margin-right: 40px;
-		}
-		@media (min-width: 1280px) {
-			width: 20%;
-		}
-	}
+  .bio-headshot {
+    width: 50%;
+    /* background: linear-gradient(to right, var(--primary), var(--secondary), var(--tertiary)); */
+    /* border: 1px solid black; */
+    border-radius: var(--default-border-radius);
+    padding: 2px;
+    /* box-shadow: -8px 8px 0 0 black; */
+    @media (min-width: 768px) {
+      order: 1;
+      width: 30%;
+      margin-right: 40px;
+    }
+    @media (min-width: 1280px) {
+      width: 20%;
+    }
+  }
 
-	.bio-headshot--image {
-		position: relative;
-		color: black;
-		border: 2px solid;
-		box-shadow: -8px 8px 0 0;
-		width: 100%;
-		height: 100%;
-		border-radius: var(--default-border-radius);
-		transition-property: color, border-color;
-		transition-duration: 400ms;
-		transition-timing-function: ease;
-	}
+  .bio-headshot--image {
+    position: relative;
+    color: black;
+    border: 2px solid;
+    box-shadow: -8px 8px 0 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--default-border-radius);
+    transition-property: color, border-color;
+    transition-duration: 400ms;
+    transition-timing-function: ease;
+  }
 
-	.bio-headshot--image:active {
-		top: 8px;
-		right: 8px;
-		box-shadow: none;
-	}
+  .bio-headshot--image:active {
+    top: 8px;
+    right: 8px;
+    box-shadow: none;
+  }
 
-	.bio-headshot--image--active {
-		top: 8px;
-		right: 8px;
-		box-shadow: none;
-	}
+  .bio-headshot--image--active {
+    top: 8px;
+    right: 8px;
+    box-shadow: none;
+  }
 
-	.content {
-		display: flex;
-		flex-direction: column;
-		justify-content: start;
-		gap: 12px;
-		@media (min-width: 768px) {
-			flex-basis: 50%;
-		}
-	}
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 12px;
+    @media (min-width: 768px) {
+      flex-basis: 50%;
+    }
+  }
 
-	.content main {
-		font-size: 18px;
-		font-weight: 500;
+  .content main {
+    font-size: 18px;
+    font-weight: 500;
 
-		@media (min-width: 1024px) {
-			font-size: 24px;
-		}
-	}
+    @media (min-width: 1024px) {
+      font-size: 24px;
+    }
+  }
 
-	.content main p {
-		line-height: 175%;
-		font-size: 20px;
+  .content main p {
+    line-height: 175%;
+    font-size: 20px;
 
-		@media (min-width: 1024px) {
-			font-size: 26px;
-		}
-	}
+    @media (min-width: 1024px) {
+      font-size: 26px;
+    }
+  }
 
-	.emph {
-		font-weight: 600;
-	}
+  .emph {
+    font-weight: 600;
+  }
 
-	.hero_title {
-		line-height: 125%;
-		margin: 0;
-	}
+  .hero_title {
+    line-height: 125%;
+    margin: 0;
+  }
 
-	#hero_title--intro {
-		transition: background-color 300ms linear;
-	}
+  #hero_title--intro {
+    transition: background-color 300ms linear;
+  }
 
-	.contact {
-		margin-top: 4px;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: 20px;
-	}
+  .contact {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
 
-	.projects {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 24px;
-		padding: 16px var(--default-padding-x);
+  .projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 16px var(--default-padding-x);
 
-		@media (min-width: 768px) {
-			padding: 24px var(--default-padding-x-md);
-			align-items: start;
-			gap: 28px;
-		}
+    @media (min-width: 768px) {
+      padding: 24px var(--default-padding-x-md);
+      align-items: start;
+      gap: 28px;
+    }
 
-		@media (min-width: 1024px) {
-			padding: 24px var(--default-padding-x-lg);
-		}
-	}
+    @media (min-width: 1024px) {
+      padding: 24px var(--default-padding-x-lg);
+    }
+  }
 
-	.projects-header {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: 4px;
-	}
+  .projects-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
 
-	.projects-arrow {
-		stroke-width: 2;
-		@media (min-width: 1024px) {
-			height: 30px;
-			width: 30px;
-			stroke-width: 3;
-		}
-	}
+  .projects-arrow {
+    stroke-width: 2;
+    @media (min-width: 1024px) {
+      height: 30px;
+      width: 30px;
+      stroke-width: 3;
+    }
+  }
 
-	footer {
-		font-size: 14px;
-		margin: 0 16px;
-		padding-top: 16px;
-		@media (min-width: 1024px) {
-			font-size: 16px;
-		}
-	}
+  footer {
+    font-size: 14px;
+    margin: 0 16px;
+    padding-top: 16px;
+    @media (min-width: 1024px) {
+      font-size: 16px;
+    }
+  }
 </style>

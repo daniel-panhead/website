@@ -1,12 +1,10 @@
 ![image](https://github.com/user-attachments/assets/c7d7bdc7-169e-4678-8aa7-ba7111e5de49)
 
-
 # Personal Website
 
 My personal website :)
 
 Built using Astro + some Vue component islands.
-
 
 ## Commands
 

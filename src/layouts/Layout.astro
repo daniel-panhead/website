@@ -2,166 +2,168 @@
 import Navbar from "./Navbar.astro";
 
 interface Props {
-	title: string;
-	showNav?: boolean;
+  title: string;
+  showNav?: boolean;
 }
 
 const { title, showNav = true } = Astro.props;
 
 declare global {
-	interface Window {
-		dataLayer: any[];
-	}
+  interface Window {
+    dataLayer: any[];
+  }
 }
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Daniel Pan Website" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<link rel="preconnect" href="https://www.googletagmanager.com" />
-		<link rel="preconnect" href="https://www.google-analytics.com" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<!-- Google tag (gtag.js) -->
-	<script
-		is:inline
-		async
-		type="text/partytown"
-		src="https://www.googletagmanager.com/gtag/js?id=G-T6DTLYXZ5Z"></script>
-	<script type="text/partytown">
-		window.dataLayer = window.dataLayer || [];
-		window.gtag = function gtag() {
-			// @ts-expect-error
-			dataLayer.push(arguments);
-		};
-		gtag("js", new Date());
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Daniel Pan Website" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script
+      is:inline
+      async
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=G-T6DTLYXZ5Z"
+    ></script></head
+  >
+  <!-- Google tag (gtag.js) -->
 
-		gtag("config", "G-T6DTLYXZ5Z");
-	</script>
-	<body>
-		{showNav && <Navbar />}
-		<slot />
-	</body>
+  <script type="text/partytown">
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() {
+      // @ts-expect-error
+      dataLayer.push(arguments);
+    };
+    gtag("js", new Date());
+
+    gtag("config", "G-T6DTLYXZ5Z");
+  </script>
+  <body>
+    {showNav && <Navbar />}
+    <slot />
+  </body>
 </html>
 <style is:global>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
-	:root {
-		--page-background: #fffffb;
-		--section-background: #fffff2;
-		--primary: #b5d7ff;
-		--primary-text: #0a66d2;
-		--secondary: #efccff;
-		--secondary-text: #980adb;
-		--tertiary: #fdffb1;
-		--tertiary-text: #947300;
+  :root {
+    --page-background: #fffffb;
+    --section-background: #fffff2;
+    --primary: #b5d7ff;
+    --primary-text: #0a66d2;
+    --secondary: #efccff;
+    --secondary-text: #980adb;
+    --tertiary: #fdffb1;
+    --tertiary-text: #947300;
 
-		--default-border-radius: 9px;
-		--default-padding-x: 28px;
-		--default-padding-x-md: 60px;
-		--default-padding-x-lg: 92px;
-	}
+    --default-border-radius: 9px;
+    --default-padding-x: 28px;
+    --default-padding-x-md: 60px;
+    --default-padding-x-lg: 92px;
+  }
 
-	.bg-primary {
-		background-color: var(--primary);
-	}
-	.text-primary {
-		color: var(--primary-text);
-	}
-	.text-secondary {
-		color: var(--secondary-text);
-	}
-	.text-tertiary {
-		color: var(--tertiary-text);
-	}
+  .bg-primary {
+    background-color: var(--primary);
+  }
+  .text-primary {
+    color: var(--primary-text);
+  }
+  .text-secondary {
+    color: var(--secondary-text);
+  }
+  .text-tertiary {
+    color: var(--tertiary-text);
+  }
 
-	html {
-		font-family: "Work Sans", system-ui, sans-serif;
-		background: var(--page-background);
-	}
+  html {
+    font-family: "Work Sans", system-ui, sans-serif;
+    background: var(--page-background);
+  }
 
-	body {
-		display: flex;
-		flex-direction: column;
-		padding-bottom: 20px;
-		margin: 0;
-	}
+  body {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    margin: 0;
+  }
 
-	h1 {
-		font-family: "Work Sans", system-ui, sans-serif;
-		font-weight: 500;
-		font-size: 56px;
-		@media (min-width: 1024px) {
-			font-size: 72px;
-		}
-	}
+  h1 {
+    font-family: "Work Sans", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 56px;
+    @media (min-width: 1024px) {
+      font-size: 72px;
+    }
+  }
 
-	h2 {
-		font-family: "Public Sans", system-ui, sans-serif;
-		font-weight: 700;
-		font-size: 24px;
-		margin: 0;
+  h2 {
+    font-family: "Public Sans", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0;
 
-		@media (min-width: 1024px) {
-			font-size: 36px;
-		}
-	}
+    @media (min-width: 1024px) {
+      font-size: 36px;
+    }
+  }
 
-	.btn {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		gap: 10px;
-		padding: 16px 20px;
-		cursor: pointer;
-		border: 2px solid black;
-		border-radius: var(--default-border-radius);
-		font-family: "Work Sans", system-ui, sans-serif;
-		box-shadow: -4px 4px 0 0 black;
-		font-size: 14px;
-		transition: all 100ms ease-out;
+  .btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: var(--default-border-radius);
+    font-family: "Work Sans", system-ui, sans-serif;
+    box-shadow: -4px 4px 0 0 black;
+    font-size: 14px;
+    transition: all 100ms ease-out;
 
-		@media (min-width: 1024px) {
-			font-size: 16px;
-		}
-	}
+    @media (min-width: 1024px) {
+      font-size: 16px;
+    }
+  }
 
-	.btn:hover {
-		box-shadow: none;
-		opacity: 1;
-		transform: translate(-4px, 4px);
-	}
+  .btn:hover {
+    box-shadow: none;
+    opacity: 1;
+    transform: translate(-4px, 4px);
+  }
 
-	.btn:active {
-		box-shadow: none;
-		transform: translate(-4px, 4px);
-		filter: brightness(80%);
-	}
+  .btn:active {
+    box-shadow: none;
+    transform: translate(-4px, 4px);
+    filter: brightness(80%);
+  }
 
-	a {
-		text-decoration: none;
-		color: black;
-		transition: opacity 100ms ease-in-out;
-	}
-	a:hover {
-		opacity: 0.6;
-	}
+  a {
+    text-decoration: none;
+    color: black;
+    transition: opacity 100ms ease-in-out;
+  }
+  a:hover {
+    opacity: 0.6;
+  }
 
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
 </style>

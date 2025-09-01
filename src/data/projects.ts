@@ -1,4 +1,4 @@
-import workfly from "../assets/workfly.png";  
+import workfly from "../assets/workfly.png";
 import profound from "../assets/profound.png";
 import sherlockify from "../assets/sherlockify.png";
 import biomod from "../assets/biomod.png";

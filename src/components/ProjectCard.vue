@@ -1,26 +1,31 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
-import { onMounted, ref } from 'vue'
+import { onMounted, ref } from "vue";
 import ProjectCardPopup from "./ProjectCardPopup.vue";
 
 const breakpoints = useBreakpoints(breakpointsTailwind);
-const lgBreakpoint = breakpoints.greaterOrEqual('lg');
+const lgBreakpoint = breakpoints.greaterOrEqual("lg");
 const mounted = ref(false);
 
 const showPopup = ref(false);
 
-const { title, tagline, link, isPopup = false } = defineProps<{
-  title: string,
-  tagline: string,
-  link: string,
-  isPopup?: boolean
+const {
+  title,
+  tagline,
+  link,
+  isPopup = false,
+} = defineProps<{
+  title: string;
+  tagline: string;
+  link: string;
+  isPopup?: boolean;
 }>();
 
 const handleClickCard = () => {
   if (!isPopup && !lgBreakpoint.value) {
     showPopup.value = true;
   }
-}
+};
 
 const handleKeyPress = (payload: KeyboardEvent) => {
   const key = payload.key;
@@ -28,24 +33,31 @@ const handleKeyPress = (payload: KeyboardEvent) => {
     payload.preventDefault();
     handleClickCard();
   }
-}
+};
 
-onMounted(() => mounted.value = true);
-
+onMounted(() => (mounted.value = true));
 </script>
 
 <template>
   <div style="display: contents">
-    <div @click="handleClickCard" @keydown="handleKeyPress"
-      :class="{ 'project_card': true, 'project_card--popup': isPopup }"
+    <div
+      @click="handleClickCard"
+      @keydown="handleKeyPress"
+      :class="{ project_card: true, 'project_card--popup': isPopup }"
       :tabindex="mounted && !lgBreakpoint && !isPopup ? '0' : undefined"
-      :aria-haspopup="mounted && !lgBreakpoint && !isPopup ? 'dialog' : false">
+      :aria-haspopup="mounted && !lgBreakpoint && !isPopup ? 'dialog' : false"
+    >
       <div class="project_card-image">
         <slot name="img"></slot>
       </div>
       <div class="project_card-body">
         <div class="project_card-content">
-          <div :class="{ 'project_card-header': true, 'project_card-header--popup': isPopup }">
+          <div
+            :class="{
+              'project_card-header': true,
+              'project_card-header--popup': isPopup,
+            }"
+          >
             <h3>{{ title }}</h3>
             <p>{{ tagline }}</p>
           </div>
@@ -53,24 +65,60 @@ onMounted(() => mounted.value = true);
             <slot></slot>
           </p>
         </div>
-        <a :href="link" :class="{ 'project_card-link': true, 'project_card-link--responsive': !isPopup }"
-          :aria-label="`Check out more about ${title}`" target="_blank">
+        <a
+          :href="link"
+          :class="{
+            'project_card-link': true,
+            'project_card-link--responsive': !isPopup,
+          }"
+          :aria-label="`Check out more about ${title}`"
+          target="_blank"
+        >
           Check it out
-          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-            viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M19 12H5m14 0-4 4m4-4-4-4" />
+          <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 12H5m14 0-4 4m4-4-4-4"
+            />
           </svg>
         </a>
       </div>
-      <svg v-if="!isPopup" class="project_card-expand_trigger" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-        width="24" height="24" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M16 4h4m0 0v4m0-4-5 5M8 20H4m0 0v-4m0 4 5-5"></path>
+      <svg
+        v-if="!isPopup"
+        class="project_card-expand_trigger"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M16 4h4m0 0v4m0-4-5 5M8 20H4m0 0v-4m0 4 5-5"
+        ></path>
       </svg>
     </div>
     <ProjectCardPopup v-if="!isPopup && !lgBreakpoint" v-model="showPopup">
-      <ProjectCard :title="title" :tagline="tagline" :link="link" :isPopup="true">
+      <ProjectCard
+        :title="title"
+        :tagline="tagline"
+        :link="link"
+        :isPopup="true"
+      >
         <template #img>
           <slot name="img"></slot>
         </template>
